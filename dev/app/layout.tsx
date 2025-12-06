@@ -1,6 +1,9 @@
 import type { Metadata } from "next";
 import { Inter, Roboto_Mono } from "next/font/google";
+import { Analytics } from '@vercel/analytics/react';
 import "../styles/globals.css";
+import { DEFAULT_METADATA } from "@/lib/seo/config";
+import { organizationSchema } from "@/lib/structured-data/organization";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -16,11 +19,7 @@ const robotoMono = Roboto_Mono({
   display: "swap",
 });
 
-export const metadata: Metadata = {
-  title: "Yellow Power International | Mining Support Services",
-  description: "Yellow Power International provides comprehensive drilling and mining support services across Africa. Established 2017 in Madina, Greater Accra, Ghana.",
-  keywords: ["mining support services", "drilling services", "Yellow Power International", "Ghana mining", "Pre Split Drilling", "Production Drilling", "Reverse Circulation", "Load and Haul", "Construction Services"],
-};
+export const metadata: Metadata = DEFAULT_METADATA;
 
 import { RootLayoutWrapper } from "@/components/layouts/RootLayout";
 
@@ -31,8 +30,16 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${inter.variable} ${robotoMono.variable}`}>
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
+          suppressHydrationWarning
+        />
+      </head>
       <body className="antialiased font-sans">
         <RootLayoutWrapper>{children}</RootLayoutWrapper>
+        <Analytics />
       </body>
     </html>
   );

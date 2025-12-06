@@ -8,29 +8,14 @@ import { WhyChooseUs } from "@/components/sections/WhyChooseUs";
 import { NewsGrid } from "@/components/sections/NewsGrid";
 import { CareersCTA } from "@/components/sections/CareersCTA";
 import { NEWS_ARTICLES } from "@/lib/constants/news";
+import { buildMetadata } from "@/lib/seo/config";
 
-export const metadata: Metadata = {
-  title: "Yellow Power International | Mining Support Services in Africa",
-  description: "Leading provider of comprehensive drilling and mining support services across Africa. Pre Split Drilling, Production Drilling, Reverse Circulation Drilling, Load & Haul Operations, and Construction Services. Established 2017 in Ghana.",
-  keywords: [
-    "mining support services",
-    "drilling services Africa",
-    "Yellow Power International",
-    "Ghana mining services",
-    "Pre Split Drilling",
-    "Production Drilling",
-    "Reverse Circulation Drilling",
-    "Load and Haul Operations",
-    "Mining Construction Services",
-    "African mining industry"
-  ],
-  openGraph: {
-    title: "Yellow Power International | Mining Support Services in Africa",
-    description: "Leading provider of comprehensive drilling and mining support services across Africa since 2017.",
-    type: "website",
-    locale: "en_US",
-  },
-};
+export const metadata: Metadata = buildMetadata({
+  title: "Leading Mining & Drilling Services in West Africa",
+  description: "Yellow Power International provides comprehensive drilling, blasting, and mining support services across West Africa. Specialized in production drilling, pre-split drilling, load & haul operations, and construction services. Established 2017 in Ghana.",
+  path: "/",
+  type: "website",
+});
 
 export default function HomePage() {
   // Get latest 3 news articles for homepage
