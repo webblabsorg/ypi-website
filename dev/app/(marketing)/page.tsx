@@ -7,6 +7,7 @@ import { ClientsSection } from "@/components/sections/ClientsSection";
 import { WhyChooseUs } from "@/components/sections/WhyChooseUs";
 import { NewsGrid } from "@/components/sections/NewsGrid";
 import { CareersCTA } from "@/components/sections/CareersCTA";
+import { NEWS_ARTICLES } from "@/lib/constants/news";
 
 export const metadata: Metadata = {
   title: "Yellow Power International | Mining Support Services in Africa",
@@ -32,6 +33,9 @@ export const metadata: Metadata = {
 };
 
 export default function HomePage() {
+  // Get latest 3 news articles for homepage
+  const latestNews = NEWS_ARTICLES.slice(0, 3);
+
   return (
     <main>
       <HeroSection />
@@ -40,7 +44,7 @@ export default function HomePage() {
       <EquipmentShowcase />
       <ClientsSection />
       <WhyChooseUs />
-      <NewsGrid />
+      <NewsGrid articles={latestNews} columns={3} showExcerpt={true} />
       <CareersCTA />
     </main>
   );

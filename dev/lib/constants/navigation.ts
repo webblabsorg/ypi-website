@@ -178,10 +178,49 @@ export const MAIN_NAV: NavItem[] = [
   {
     title: "News & Media",
     href: "/news",
+    children: [
+      {
+        title: "Latest News",
+        href: "/news",
+        description: "Recent updates and announcements",
+      },
+      {
+        title: "Press Releases",
+        href: "/news/press-releases",
+        description: "Official press releases and statements",
+      },
+      {
+        title: "Media Kit",
+        href: "/media",
+        description: "Logos, brand guidelines, and resources",
+      },
+      {
+        title: "Image Gallery",
+        href: "/media/gallery",
+        description: "Photos of equipment, projects, and team",
+      },
+      {
+        title: "Video Library",
+        href: "/media/videos",
+        description: "Company videos and demonstrations",
+      },
+    ],
   },
   {
     title: "Contact",
     href: "/contact",
+    children: [
+      {
+        title: "Contact Us",
+        href: "/contact",
+        description: "Get in touch with our team",
+      },
+      {
+        title: "Office Locations",
+        href: "/contact/locations",
+        description: "Find our offices across Africa",
+      },
+    ],
   },
 ];
 
@@ -202,7 +241,9 @@ export const FOOTER_NAV = {
   resources: [
     { title: "Projects", href: "/projects" },
     { title: "Case Studies", href: "/case-studies" },
-    { title: "News & Media", href: "/news" },
+    { title: "News", href: "/news" },
+    { title: "Press Releases", href: "/news/press-releases" },
+    { title: "Media Kit", href: "/media" },
     { title: "Sustainability", href: "/sustainability" },
     { title: "Partners & Clients", href: "/clients" },
     { title: "Contact Us", href: "/contact" },
