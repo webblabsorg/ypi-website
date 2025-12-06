@@ -5,7 +5,8 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Button } from '@/components/ui/button';
 import { ContactForm } from '@/components/forms/ContactForm';
 import { WhatsAppButton } from '@/components/shared/WhatsAppButton';
-import { DEPARTMENT_CONTACTS, EMERGENCY_CONTACT, SOCIAL_MEDIA } from '@/lib/constants/offices';
+import { SocialLinks } from '@/components/shared/SocialLinks';
+import { DEPARTMENT_CONTACTS, EMERGENCY_CONTACT } from '@/lib/constants/offices';
 
 export const metadata: Metadata = {
   title: 'Contact Us | Yellow Power International',
@@ -186,52 +187,7 @@ export default function ContactPage() {
           <h3 className="text-xl font-bold text-gray-900 mb-4">
             Follow Us on Social Media
           </h3>
-          <div className="flex items-center justify-center gap-4">
-            <a
-              href={SOCIAL_MEDIA.linkedin}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-gray-600 hover:text-gold-600 transition-colors"
-            >
-              LinkedIn
-            </a>
-            <span className="text-gray-400">|</span>
-            <a
-              href={SOCIAL_MEDIA.facebook}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-gray-600 hover:text-gold-600 transition-colors"
-            >
-              Facebook
-            </a>
-            <span className="text-gray-400">|</span>
-            <a
-              href={SOCIAL_MEDIA.twitter}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-gray-600 hover:text-gold-600 transition-colors"
-            >
-              Twitter
-            </a>
-            <span className="text-gray-400">|</span>
-            <a
-              href={SOCIAL_MEDIA.instagram}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-gray-600 hover:text-gold-600 transition-colors"
-            >
-              Instagram
-            </a>
-            <span className="text-gray-400">|</span>
-            <a
-              href={SOCIAL_MEDIA.youtube}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-gray-600 hover:text-gold-600 transition-colors"
-            >
-              YouTube
-            </a>
-          </div>
+          <SocialLinks variant="default" size="md" showLabels className="justify-center" />
         </div>
       </div>
     </div>

@@ -3,6 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
+import { ShareButtons } from "@/components/shared/ShareButtons";
 import { MapPin, Calendar, CheckCircle2, Quote } from "lucide-react";
 import { getProjectBySlug, PROJECTS } from "@/lib/constants/projects";
 import { SERVICES } from "@/lib/constants/services";
@@ -59,7 +60,18 @@ export default function ProjectPage({ params }: ProjectPageProps) {
               </span>
             </div>
             <h1 className="text-4xl md:text-5xl font-bold mb-6">{project.title}</h1>
-            <p className="text-xl text-gray-300">{project.summary}</p>
+            <p className="text-xl text-gray-300 mb-6">{project.summary}</p>
+            
+            {/* Share buttons */}
+            <div className="flex justify-center">
+              <ShareButtons
+                url={`https://yellowpowerinternational.com/projects/${project.slug}`}
+                title={project.title}
+                description={project.summary}
+                variant="compact"
+                className="bg-white/10 backdrop-blur-sm px-4 py-2 rounded-lg"
+              />
+            </div>
           </div>
         </div>
       </section>

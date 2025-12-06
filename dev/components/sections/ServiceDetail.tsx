@@ -1,6 +1,9 @@
+'use client';
+
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { CheckCircle2, ArrowRight } from "lucide-react";
+import { ShareButtons } from "@/components/shared/ShareButtons";
 import type { Service } from "@/lib/constants/services";
 import { TechnicalSpecs } from "./TechnicalSpecs";
 import { EquipmentCard } from "@/components/ui/EquipmentCard";
@@ -23,9 +26,21 @@ export function ServiceDetail({ service, children }: ServiceDetailProps) {
             <h1 className="text-4xl md:text-5xl font-bold mb-6">
               {service.name}
             </h1>
-            <p className="text-xl text-gray-300 leading-relaxed mb-8">
+            <p className="text-xl text-gray-300 leading-relaxed mb-6">
               {service.longDescription}
             </p>
+            
+            {/* Share buttons */}
+            <div className="flex justify-center mb-8">
+              <ShareButtons
+                url={`https://yellowpowerinternational.com/services/${service.id}`}
+                title={service.name}
+                description={service.longDescription}
+                variant="compact"
+                className="bg-white/10 backdrop-blur-sm px-4 py-2 rounded-lg"
+              />
+            </div>
+            
             <div className="flex flex-wrap gap-4 justify-center">
               <Button size="lg" className="bg-gold hover:bg-gold-600 text-navy font-semibold" asChild>
                 <Link href="/services#quote-form">

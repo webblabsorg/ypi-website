@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { Separator } from "@/components/ui/separator";
+import { SocialLinks } from "@/components/shared/SocialLinks";
 import { COMPANY_INFO } from "@/lib/constants/company";
 import { FOOTER_NAV } from "@/lib/constants/navigation";
 
@@ -115,10 +116,8 @@ export function Footer() {
             ))}
           </div>
 
-          {/* Social Links (placeholder for now) */}
-          <div className="flex gap-4">
-            {/* Social icons can be added in later phases */}
-          </div>
+          {/* Social Links */}
+          <SocialLinks variant="footer" size="md" className="justify-end" />
         </div>
       </div>
     </footer>

@@ -1,3 +1,8 @@
+/**
+ * @deprecated This component is deprecated. Use @/components/shared/ShareButtons instead.
+ * This file is kept for backward compatibility but should not be used in new code.
+ */
+
 'use client';
 
 import { Facebook, Linkedin, Twitter, Link as LinkIcon } from 'lucide-react';

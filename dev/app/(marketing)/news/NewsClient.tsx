@@ -4,6 +4,7 @@ import { useState, useMemo, useEffect } from 'react';
 import Link from 'next/link';
 import { NewsGrid } from '@/components/sections/NewsGrid';
 import { NewsFilter } from '@/components/sections/NewsFilter';
+import { NewsletterSignup } from '@/components/sections/NewsletterSignup';
 import { NEWS_ARTICLES } from '@/lib/constants/news';
 import { Newspaper, ChevronLeft, ChevronRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -80,6 +81,11 @@ export function NewsClient() {
             Stay informed with the latest news, project achievements, equipment acquisitions, 
             industry recognition, and company developments from Yellow Power International.
           </p>
+        </div>
+
+        {/* Newsletter Signup */}
+        <div className="mb-12">
+          <NewsletterSignup />
         </div>
 
         {/* Filter Section */}

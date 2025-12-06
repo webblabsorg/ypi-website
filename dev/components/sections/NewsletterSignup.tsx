@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import Link from 'next/link';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { newsletterSchema, type NewsletterInput } from '@/lib/validations/newsletter';
@@ -90,7 +91,10 @@ export function NewsletterSignup() {
               </Button>
             </div>
             <p className="text-xs text-gray-400 mt-3">
-              We respect your privacy. Unsubscribe at any time.
+              We respect your privacy. Unsubscribe at any time.{' '}
+              <Link href="/news/newsletter-archive" className="text-gold-200 hover:text-gold-100 underline">
+                View past newsletters
+              </Link>
             </p>
           </form>
         )}
