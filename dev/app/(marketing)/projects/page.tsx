@@ -1,13 +1,9 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { ProjectCard } from "@/components/sections/ProjectCard";
 import { ProjectFilter, type FilterValues } from "@/components/sections/ProjectFilter";
 import { PROJECTS } from "@/lib/constants/projects";
-
-// Note: metadata cannot be exported from client components,
-// so we set the document title programmatically
-// For proper SEO, consider moving filtering logic to URL params with server component
 
 export default function ProjectsPage() {
   const [filters, setFilters] = useState<FilterValues>({
@@ -15,6 +11,46 @@ export default function ProjectsPage() {
     status: "",
     country: "",
   });
+
+  // Set document metadata programmatically since client components can't export metadata
+  useEffect(() => {
+    document.title = "Project Portfolio | Yellow Power International";
+    
+    // Update meta description
+    const metaDescription = document.querySelector('meta[name="description"]');
+    if (metaDescription) {
+      metaDescription.setAttribute(
+        "content",
+        "Browse our portfolio of completed and ongoing mining projects across West Africa. Explore case studies from Ghana, Mali, and Burkina Faso."
+      );
+    } else {
+      const meta = document.createElement("meta");
+      meta.name = "description";
+      meta.content = "Browse our portfolio of completed and ongoing mining projects across West Africa. Explore case studies from Ghana, Mali, and Burkina Faso.";
+      document.head.appendChild(meta);
+    }
+
+    // Update Open Graph tags
+    let ogTitle = document.querySelector('meta[property="og:title"]');
+    if (ogTitle) {
+      ogTitle.setAttribute("content", "Project Portfolio | Yellow Power International");
+    } else {
+      ogTitle = document.createElement("meta");
+      ogTitle.setAttribute("property", "og:title");
+      ogTitle.setAttribute("content", "Project Portfolio | Yellow Power International");
+      document.head.appendChild(ogTitle);
+    }
+
+    let ogDescription = document.querySelector('meta[property="og:description"]');
+    if (ogDescription) {
+      ogDescription.setAttribute("content", "Browse our portfolio of completed and ongoing mining projects across West Africa.");
+    } else {
+      ogDescription = document.createElement("meta");
+      ogDescription.setAttribute("property", "og:description");
+      ogDescription.setAttribute("content", "Browse our portfolio of completed and ongoing mining projects across West Africa.");
+      document.head.appendChild(ogDescription);
+    }
+  }, []);
 
   const filteredProjects = PROJECTS.filter((project) => {
     if (filters.service && !project.services.includes(filters.service)) {
