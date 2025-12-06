@@ -90,6 +90,38 @@ export const MAIN_NAV: NavItem[] = [
   {
     title: "Sustainability & CSR",
     href: "/sustainability",
+    children: [
+      {
+        title: "Overview",
+        href: "/sustainability",
+        description: "Our commitment to sustainability and social responsibility",
+      },
+      {
+        title: "Environmental Responsibility",
+        href: "/sustainability/environment",
+        description: "Eco-friendly practices and emissions reduction",
+      },
+      {
+        title: "Safety Excellence",
+        href: "/sustainability/safety",
+        description: "Zero harm philosophy and safety performance",
+      },
+      {
+        title: "CSR Programs",
+        href: "/sustainability/csr",
+        description: "Community development and social impact",
+      },
+      {
+        title: "CSR Projects",
+        href: "/sustainability/csr/projects",
+        description: "Explore our community impact initiatives",
+      },
+      {
+        title: "Ethical Business Practices",
+        href: "/sustainability/ethics",
+        description: "Transparency, compliance, and governance",
+      },
+    ],
   },
   {
     title: "Partners & Clients",
