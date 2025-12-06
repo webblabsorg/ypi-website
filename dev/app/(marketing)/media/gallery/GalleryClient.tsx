@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import Link from 'next/link';
 import { Images } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { MediaGallery } from '@/components/sections/MediaGallery';
@@ -67,12 +68,12 @@ export function GalleryClient() {
           <p className="text-gray-600 mb-4">
             Looking for logos, brand guidelines, or other media resources?
           </p>
-          <a
+          <Link
             href="/media"
             className="text-gold-600 hover:text-gold-700 font-semibold hover:underline"
           >
             ← Back to Media Kit
-          </a>
+          </Link>
         </div>
       </div>
     </div>

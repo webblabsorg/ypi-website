@@ -1,7 +1,9 @@
 'use client';
 
+import Link from 'next/link';
 import { MapPin } from 'lucide-react';
 import { OfficeCard } from '@/components/sections/OfficeCard';
+import { OfficeMap } from '@/components/sections/OfficeMap';
 import { OFFICE_LOCATIONS, getAllCountries } from '@/lib/constants/offices';
 
 export function LocationsClient() {
@@ -24,17 +26,9 @@ export function LocationsClient() {
           </p>
         </div>
 
-        {/* Map Placeholder */}
-        <div className="mb-16 bg-gray-200 rounded-xl h-[500px] flex items-center justify-center">
-          <div className="text-center">
-            <MapPin className="h-16 w-16 text-gray-400 mx-auto mb-4" />
-            <p className="text-gray-600 text-lg">
-              Interactive Map (Mapbox Integration)
-            </p>
-            <p className="text-sm text-gray-500 mt-2">
-              Map will display when NEXT_PUBLIC_MAPBOX_TOKEN is configured
-            </p>
-          </div>
+        {/* Interactive Map with OpenStreetMap */}
+        <div className="mb-16">
+          <OfficeMap offices={OFFICE_LOCATIONS} height="500px" />
         </div>
 
         {/* Office Cards by Country */}
@@ -65,12 +59,12 @@ export function LocationsClient() {
             for detailed directions and local information.
           </p>
           <div className="flex items-center justify-center gap-4">
-            <a
+            <Link
               href="/contact"
               className="inline-flex items-center justify-center px-6 py-3 bg-white text-gold-600 hover:bg-gray-100 rounded-md font-semibold transition-colors"
             >
               Contact Us
-            </a>
+            </Link>
             <a
               href="tel:+233268066942"
               className="inline-flex items-center justify-center px-6 py-3 border-2 border-white text-white hover:bg-white/10 rounded-md font-semibold transition-colors"

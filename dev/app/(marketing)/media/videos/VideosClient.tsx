@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import Link from 'next/link';
 import { Video as VideoIcon } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { VideoGrid } from '@/components/sections/VideoPlayer';
@@ -94,19 +95,19 @@ export function VideosClient() {
             Looking for photos or other media resources?
           </p>
           <div className="flex items-center justify-center gap-4">
-            <a
+            <Link
               href="/media/gallery"
               className="text-gold-600 hover:text-gold-700 font-semibold hover:underline"
             >
               Image Gallery →
-            </a>
+            </Link>
             <span className="text-gray-400">|</span>
-            <a
+            <Link
               href="/media"
               className="text-gold-600 hover:text-gold-700 font-semibold hover:underline"
             >
               Media Kit →
-            </a>
+            </Link>
           </div>
         </div>
       </div>

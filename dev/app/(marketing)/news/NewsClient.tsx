@@ -1,13 +1,23 @@
 'use client';
 
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useEffect } from 'react';
+import Link from 'next/link';
 import { NewsGrid } from '@/components/sections/NewsGrid';
 import { NewsFilter } from '@/components/sections/NewsFilter';
 import { NEWS_ARTICLES } from '@/lib/constants/news';
-import { Newspaper } from 'lucide-react';
+import { Newspaper, ChevronLeft, ChevronRight } from 'lucide-react';
+import { Button } from '@/components/ui/button';
+
+const ITEMS_PER_PAGE = 6;
 
 export function NewsClient() {
   const [filters, setFilters] = useState({ category: 'All', searchTerm: '' });
+  const [currentPage, setCurrentPage] = useState(1);
+
+  // Reset to page 1 when filters change
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [filters]);
 
   // Filter articles based on category and search term
   const filteredArticles = useMemo(() => {
@@ -31,6 +41,29 @@ export function NewsClient() {
 
     return filtered;
   }, [filters]);
+
+  // Pagination
+  const totalPages = Math.ceil(filteredArticles.length / ITEMS_PER_PAGE);
+  const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
+  const endIndex = startIndex + ITEMS_PER_PAGE;
+  const paginatedArticles = filteredArticles.slice(startIndex, endIndex);
+
+  const goToPage = (page: number) => {
+    setCurrentPage(page);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  const goToPrevious = () => {
+    if (currentPage > 1) {
+      goToPage(currentPage - 1);
+    }
+  };
+
+  const goToNext = () => {
+    if (currentPage < totalPages) {
+      goToPage(currentPage + 1);
+    }
+  };
 
   return (
     <div className="min-h-screen bg-gray-50 py-16">
@@ -57,16 +90,67 @@ export function NewsClient() {
           />
         </div>
 
-        {/* Results count */}
-        <div className="mb-6">
+        {/* Results count and pagination info */}
+        <div className="mb-6 flex items-center justify-between">
           <p className="text-gray-600">
-            Showing <strong>{filteredArticles.length}</strong>{' '}
+            Showing <strong>{startIndex + 1}-{Math.min(endIndex, filteredArticles.length)}</strong> of{' '}
+            <strong>{filteredArticles.length}</strong>{' '}
             {filteredArticles.length === 1 ? 'article' : 'articles'}
           </p>
+          {totalPages > 1 && (
+            <p className="text-sm text-gray-500">
+              Page {currentPage} of {totalPages}
+            </p>
+          )}
         </div>
 
         {/* News Grid */}
-        <NewsGrid articles={filteredArticles} columns={3} showExcerpt={true} />
+        <NewsGrid articles={paginatedArticles} columns={3} showExcerpt={true} />
+
+        {/* Pagination Controls */}
+        {totalPages > 1 && (
+          <div className="mt-12 flex items-center justify-center gap-2">
+            <Button
+              variant="outline"
+              size="sm"
+              onClick={goToPrevious}
+              disabled={currentPage === 1}
+              aria-label="Previous page"
+              className="gap-1"
+            >
+              <ChevronLeft className="h-4 w-4" />
+              Previous
+            </Button>
+            
+            <div className="flex items-center gap-1">
+              {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
+                <Button
+                  key={page}
+                  variant={currentPage === page ? 'default' : 'outline'}
+                  size="sm"
+                  onClick={() => goToPage(page)}
+                  className={currentPage === page ? 'bg-gold-500 hover:bg-gold-600' : ''}
+                  aria-label={`Go to page ${page}`}
+                  aria-current={currentPage === page ? 'page' : undefined}
+                >
+                  {page}
+                </Button>
+              ))}
+            </div>
+
+            <Button
+              variant="outline"
+              size="sm"
+              onClick={goToNext}
+              disabled={currentPage === totalPages}
+              aria-label="Next page"
+              className="gap-1"
+            >
+              Next
+              <ChevronRight className="h-4 w-4" />
+            </Button>
+          </div>
+        )}
 
         {/* No results message */}
         {filteredArticles.length === 0 && (
@@ -86,19 +170,19 @@ export function NewsClient() {
             Looking for press releases or media resources?
           </p>
           <div className="flex items-center justify-center gap-4">
-            <a
+            <Link
               href="/news/press-releases"
               className="text-gold-600 hover:text-gold-700 font-semibold hover:underline"
             >
               View Press Releases →
-            </a>
+            </Link>
             <span className="text-gray-400">|</span>
-            <a
+            <Link
               href="/media"
               className="text-gold-600 hover:text-gold-700 font-semibold hover:underline"
             >
               Media Kit & Resources →
-            </a>
+            </Link>
           </div>
         </div>
       </div>
