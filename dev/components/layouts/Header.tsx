@@ -2,7 +2,8 @@
 
 import * as React from "react";
 import Link from "next/link";
-import { Menu } from "lucide-react";
+import { useRouter } from "next/navigation";
+import { Menu, Search } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
   NavigationMenu,
@@ -21,6 +22,13 @@ interface HeaderProps {
 }
 
 export function Header({ onMobileMenuToggle }: HeaderProps) {
+  const router = useRouter();
+  const aiSearchEnabled = process.env.NEXT_PUBLIC_ENABLE_AI_SEARCH === 'true';
+
+  const handleSearchClick = () => {
+    router.push('/search');
+  };
+
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container flex h-16 items-center gap-2">
@@ -71,6 +79,19 @@ export function Header({ onMobileMenuToggle }: HeaderProps) {
 
         {/* Right Actions */}
         <div className="flex items-center justify-end gap-2 ml-auto">
+          {/* AI Search Button */}
+          {aiSearchEnabled && (
+            <Button
+              variant="ghost"
+              size="icon"
+              onClick={handleSearchClick}
+              aria-label="Search"
+              className="text-gray-600 hover:text-gold-600"
+            >
+              <Search className="h-5 w-5" />
+            </Button>
+          )}
+
           <Button variant="default" size="sm" className="hidden lg:inline-flex bg-gold-500 hover:bg-gold-600" asChild>
             <Link href="/contact">Get Quote</Link>
           </Button>
