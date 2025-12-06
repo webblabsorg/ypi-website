@@ -6,6 +6,8 @@ import { Badge } from "@/components/ui/badge";
 import { MapPin, Calendar, CheckCircle2, Quote } from "lucide-react";
 import { getProjectBySlug, PROJECTS } from "@/lib/constants/projects";
 import { SERVICES } from "@/lib/constants/services";
+import { ProjectTimeline } from "@/components/sections/ProjectTimeline";
+import { ProjectGallery } from "@/components/sections/ProjectGallery";
 
 interface ProjectPageProps {
   params: {
@@ -127,9 +129,46 @@ export default function ProjectPage({ params }: ProjectPageProps) {
         </div>
       </section>
 
+      {/* Project Gallery */}
+      {project.images.length > 0 && (
+        <ProjectGallery images={project.images} title="Project Gallery" />
+      )}
+
+      {/* Project Timeline */}
+      <ProjectTimeline
+        items={[
+          {
+            date: new Date(project.startDate).toLocaleDateString("en-US", { month: "long", year: "numeric" }),
+            title: "Project Commenced",
+            description: `${project.title} officially began operations.`,
+            status: "completed" as const,
+          },
+          ...(project.status === "completed" && project.endDate
+            ? [
+                {
+                  date: new Date(project.endDate).toLocaleDateString("en-US", { month: "long", year: "numeric" }),
+                  title: "Project Completed",
+                  description: `Successfully delivered all project objectives${project.results.length > 0 ? ", achieving " + project.results[0].toLowerCase() : ""}.`,
+                  status: "completed" as const,
+                },
+              ]
+            : project.status === "ongoing"
+            ? [
+                {
+                  date: "Present",
+                  title: "Ongoing Operations",
+                  description: "Project continues to deliver excellent results with our dedicated team on-site.",
+                  status: "current" as const,
+                },
+              ]
+            : []),
+        ]}
+        title="Project Timeline"
+      />
+
       {/* Testimonial */}
       {project.testimonial && (
-        <section className="py-16">
+        <section className="py-16 bg-white">
           <div className="container max-w-4xl">
             <div className="bg-navy text-white p-12 rounded-2xl relative">
               <Quote className="h-16 w-16 text-gold/20 absolute top-6 left-6" />

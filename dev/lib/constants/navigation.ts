@@ -72,12 +72,45 @@ export const MAIN_NAV: NavItem[] = [
     ],
   },
   {
+    title: "Projects",
+    href: "/projects",
+    children: [
+      {
+        title: "Project Portfolio",
+        href: "/projects",
+        description: "Browse our completed and ongoing projects",
+      },
+      {
+        title: "Case Studies",
+        href: "/case-studies",
+        description: "Detailed project success stories",
+      },
+    ],
+  },
+  {
     title: "Sustainability & CSR",
     href: "/sustainability",
   },
   {
     title: "Partners & Clients",
     href: "/clients",
+    children: [
+      {
+        title: "Our Clients",
+        href: "/clients",
+        description: "Meet our valued clients and partners",
+      },
+      {
+        title: "Partnership Opportunities",
+        href: "/partnerships",
+        description: "Explore partnership possibilities",
+      },
+      {
+        title: "Supplier Portal",
+        href: "/suppliers",
+        description: "Register as an approved supplier",
+      },
+    ],
   },
   {
     title: "Careers",
@@ -108,6 +141,8 @@ export const FOOTER_NAV = {
     { title: "Construction", href: "/services/construction" },
   ],
   resources: [
+    { title: "Projects", href: "/projects" },
+    { title: "Case Studies", href: "/case-studies" },
     { title: "News & Media", href: "/news" },
     { title: "Sustainability", href: "/sustainability" },
     { title: "Partners & Clients", href: "/clients" },

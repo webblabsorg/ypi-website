@@ -85,6 +85,24 @@ export default function PartnershipsPage() {
           <PartnershipForm />
         </div>
       </section>
+
+      <section className="py-16 bg-gray-50">
+        <div className="container max-w-3xl text-center">
+          <h3 className="text-2xl font-bold text-navy mb-4">
+            Interested in Becoming a Supplier?
+          </h3>
+          <p className="text-gray-600 mb-6">
+            If you&apos;re looking to supply equipment, parts, or services to Yellow Power International, 
+            visit our Supplier Portal to register.
+          </p>
+          <a
+            href="/suppliers"
+            className="inline-flex items-center gap-2 text-gold hover:text-gold-600 font-semibold"
+          >
+            Visit Supplier Portal →
+          </a>
+        </div>
+      </section>
     </main>
   );
 }

@@ -5,6 +5,10 @@ import { ProjectCard } from "@/components/sections/ProjectCard";
 import { ProjectFilter, type FilterValues } from "@/components/sections/ProjectFilter";
 import { PROJECTS } from "@/lib/constants/projects";
 
+// Note: metadata cannot be exported from client components,
+// so we set the document title programmatically
+// For proper SEO, consider moving filtering logic to URL params with server component
+
 export default function ProjectsPage() {
   const [filters, setFilters] = useState<FilterValues>({
     service: "",
