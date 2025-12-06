@@ -25,6 +25,20 @@ If any of these are missing or broken, you must fix/complete Phase 0 **before** 
 
 ---
 
+## Implementation Notes
+
+**Completed Implementation:**
+- ✅ **shadcn/ui Components Installed:** Button, Card, Input, Label, Separator, Navigation Menu, Sheet
+- ⏰ **Not Yet Installed (not needed yet):** Textarea, Select, Dialog, Dropdown Menu, Tabs, Accordion, Badge
+  - These components will be added in later phases when actually needed
+  - Listed in `phases.md` for reference but not required for Phase 1 completion
+- ✅ **Typography:** Uses Inter + Roboto Mono (updated from original Montserrat/Open Sans in tech doc)
+  - Inter provides better readability and is more modern
+  - Roboto Mono for technical specifications and code
+- ✅ **All Phase 1 requirements met and verified**
+
+---
+
 ## Directory Conventions (MUST FOLLOW)
 
 At the **repository root**, folders have strict roles:
@@ -169,19 +183,26 @@ You will wire the brand palette from `notes/ypi_tech_doc.md` and `notes/phases.m
 
 ### 4. Configure Typography (Fonts & Tailwind)
 
+**Note:** Implementation uses Inter + Roboto Mono (updated from original tech doc fonts).
+
 1. In `dev/tailwind.config.*`:
-   - Extend `theme.fontFamily` to include the three families from the tech doc:
-     - `display`: `['Montserrat', 'sans-serif']`
-     - `body`: `['Open Sans', 'sans-serif']`
-     - `accent`: `['Roboto Condensed', 'sans-serif']`
+   - Extend `theme.fontFamily` to include:
+     - `display`: `['Inter', 'system-ui', 'sans-serif']`
+     - `body`: `['Inter', 'system-ui', 'sans-serif']`
+     - `accent`: `['Inter', 'system-ui', 'sans-serif']`
+     - `mono`: `['Roboto Mono', 'Courier New', 'monospace']`
 
 2. In `dev/app/layout.tsx` (the root layout for the app):
-   - Use `next/font/google` to import these fonts (or closest available) from Google Fonts.
-   - Wire them into the document `<body>` className so that:
-     - The default is the `body` font.
-     - Provide utility classes (or CSS via `globals.css`) to apply `display` and `accent` fonts where needed.
+   - Use `next/font/google` to import:
+     - Inter (weights: 400, 500, 600, 700, 800)
+     - Roboto_Mono (weights: 400, 500)
+   - Wire them into the document `<html>` className with font variables.
+   - The `<body>` uses `font-sans` (which maps to `font-body`).
 
-3. Update markup in the layout or header to use `font-display`, `font-body`, `font-accent` Tailwind classes where appropriate, verifying the fonts apply.
+3. Configure font weights in Tailwind:
+   - light (300), normal (400), medium (500), semibold (600), bold (700), extrabold (800)
+
+4. Verify fonts apply correctly by checking the header and body text.
 
 4. Ensure there are **no TypeScript errors** and no runtime errors from the font imports.
 
