@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter, Roboto_Mono } from "next/font/google";
 import { Analytics } from '@vercel/analytics/react';
+import { PowerBot } from "@/components/ai/PowerBot";
 import "../styles/globals.css";
 import { DEFAULT_METADATA } from "@/lib/seo/config";
 import { organizationSchema } from "@/lib/structured-data/organization";
@@ -39,6 +40,7 @@ export default function RootLayout({
       </head>
       <body className="antialiased font-sans">
         <RootLayoutWrapper>{children}</RootLayoutWrapper>
+        <PowerBot />
         <Analytics />
       </body>
     </html>

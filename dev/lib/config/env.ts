@@ -78,3 +78,54 @@ export function getCloudinaryConfig() {
   }
   return cloudinaryConfig;
 }
+
+// AI & Vector Store configuration
+export const aiConfig = {
+  openaiApiKey: process.env.OPENAI_API_KEY,
+  openaiModel: process.env.OPENAI_MODEL || 'gpt-4-turbo-preview',
+  pineconeApiKey: process.env.PINECONE_API_KEY,
+  pineconeEnvironment: process.env.PINECONE_ENVIRONMENT,
+  pineconeIndexName: process.env.PINECONE_INDEX_NAME || 'ypi-knowledge-base',
+  enablePowerBot: process.env.NEXT_PUBLIC_ENABLE_POWERBOT === 'true',
+  enableAISearch: process.env.NEXT_PUBLIC_ENABLE_AI_SEARCH === 'true',
+};
+
+/**
+ * Check if OpenAI is configured
+ */
+export function isOpenAIConfigured(): boolean {
+  return !!aiConfig.openaiApiKey;
+}
+
+/**
+ * Check if Pinecone is configured
+ */
+export function isPineconeConfigured(): boolean {
+  return !!(
+    aiConfig.pineconeApiKey &&
+    aiConfig.pineconeEnvironment &&
+    aiConfig.pineconeIndexName
+  );
+}
+
+/**
+ * Check if AI features are fully enabled
+ */
+export function isAIFeaturesEnabled(): boolean {
+  return isOpenAIConfigured() && isPineconeConfigured();
+}
+
+/**
+ * Get AI configuration or throw error
+ */
+export function getAIConfig() {
+  if (!isOpenAIConfigured()) {
+    throw new Error('OpenAI not configured. Please set OPENAI_API_KEY in environment variables.');
+  }
+  if (!isPineconeConfigured()) {
+    throw new Error(
+      'Pinecone not configured. Please set PINECONE_API_KEY, PINECONE_ENVIRONMENT, and PINECONE_INDEX_NAME.'
+    );
+  }
+  return aiConfig;
+}
