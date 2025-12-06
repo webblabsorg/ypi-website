@@ -14,7 +14,6 @@ import {
   navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu";
 import { cn } from "@/lib/utils";
-import { COMPANY_INFO } from "@/lib/constants/company";
 import { MAIN_NAV } from "@/lib/constants/navigation";
 
 interface HeaderProps {
@@ -24,22 +23,24 @@ interface HeaderProps {
 export function Header({ onMobileMenuToggle }: HeaderProps) {
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-      <div className="container flex h-16 items-center">
+      <div className="container flex h-16 items-center gap-2">
         {/* Logo */}
-        <Link href="/" className="flex items-center space-x-2 mr-8">
-          <span className="font-display text-xl font-bold text-navy">
-            {COMPANY_INFO.name}
+        <Link href="/" className="flex items-center mr-4 flex-shrink-0">
+          <span className="font-display text-2xl font-extrabold text-gold-500 tracking-tight">
+            YPI
           </span>
         </Link>
 
         {/* Desktop Navigation */}
-        <nav className="hidden md:flex flex-1">
+        <nav className="hidden lg:flex flex-1">
           <NavigationMenu>
-            <NavigationMenuList>
+            <NavigationMenuList className="gap-1">
               {MAIN_NAV.map((item) =>
                 item.children ? (
                   <NavigationMenuItem key={item.title}>
-                    <NavigationMenuTrigger>{item.title}</NavigationMenuTrigger>
+                    <NavigationMenuTrigger className="text-sm h-9 px-3">
+                      {item.title}
+                    </NavigationMenuTrigger>
                     <NavigationMenuContent>
                       <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px]">
                         {item.children.map((child) => (
@@ -57,7 +58,7 @@ export function Header({ onMobileMenuToggle }: HeaderProps) {
                 ) : (
                   <NavigationMenuItem key={item.title}>
                     <Link href={item.href} legacyBehavior passHref>
-                      <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+                      <NavigationMenuLink className={cn(navigationMenuTriggerStyle(), "text-sm h-9 px-3")}>
                         {item.title}
                       </NavigationMenuLink>
                     </Link>
@@ -69,8 +70,8 @@ export function Header({ onMobileMenuToggle }: HeaderProps) {
         </nav>
 
         {/* Right Actions */}
-        <div className="flex flex-1 items-center justify-end space-x-2">
-          <Button variant="default" className="hidden md:inline-flex" asChild>
+        <div className="flex items-center justify-end gap-2 ml-auto">
+          <Button variant="default" size="sm" className="hidden lg:inline-flex bg-gold-500 hover:bg-gold-600" asChild>
             <Link href="/contact">Get Quote</Link>
           </Button>
           
@@ -78,7 +79,7 @@ export function Header({ onMobileMenuToggle }: HeaderProps) {
           <Button
             variant="ghost"
             size="icon"
-            className="md:hidden"
+            className="lg:hidden"
             onClick={onMobileMenuToggle}
             aria-label="Toggle menu"
           >
