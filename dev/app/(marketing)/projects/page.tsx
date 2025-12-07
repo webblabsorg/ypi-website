@@ -171,7 +171,7 @@ export default function ProjectsPage() {
 
           {/* Interactive OpenStreetMap */}
           <div className="rounded-xl bg-gray-100 p-6 shadow-lg">
-            <ProjectMap projects={COUNTRY_PROJECTS} />
+            <ProjectMap />
 
             {/* Key regions list */}
             <div className="mt-6 grid gap-6 md:grid-cols-3">

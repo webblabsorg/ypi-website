@@ -2,22 +2,8 @@
 
 import { MapPin } from "lucide-react";
 
-interface ProjectLocation {
-  id: string;
-  name: string;
-  location: string;
-  services: string[];
-  status: string;
-  coordinates: { lat: number; lng: number };
-  year: string;
-}
-
-interface ProjectMapProps {
-  projects: ProjectLocation[];
-}
-
-export function ProjectMap({ projects }: ProjectMapProps) {
-  // Static map with West Africa focus
+export function ProjectMap() {
+  // Static map with West Africa focus showing Ghana, Mali, and Burkina Faso
   return (
     <div className="relative w-full h-[500px] rounded-2xl overflow-hidden shadow-lg bg-gray-100">
       {/* Static map image using OpenStreetMap embed */}
