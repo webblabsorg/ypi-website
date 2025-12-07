@@ -4,12 +4,12 @@ import { OverlapCards } from "@/components/sections/OverlapCards";
 import { TripleFeatureCards } from "@/components/sections/TripleFeatureCards";
 import { CEOMessage } from "@/components/sections/CEOMessage";
 import { InfoCards } from "@/components/sections/InfoCards";
+import { LatestNews } from "@/components/sections/LatestNews";
 import { ServicesOverview } from "@/components/sections/ServicesOverview";
 import { StatsSection } from "@/components/sections/StatsSection";
 import { EquipmentShowcase } from "@/components/sections/EquipmentShowcase";
 import { ClientsSection } from "@/components/sections/ClientsSection";
 import { WhyChooseUs } from "@/components/sections/WhyChooseUs";
-import { NewsGrid } from "@/components/sections/NewsGrid";
 import { NewsletterSignup } from "@/components/sections/NewsletterSignup";
 import { CareersCTA } from "@/components/sections/CareersCTA";
 import { NEWS_ARTICLES } from "@/lib/constants/news";
@@ -23,8 +23,8 @@ export const metadata: Metadata = buildMetadata({
 });
 
 export default function HomePage() {
-  // Get latest 3 news articles for homepage
-  const latestNews = NEWS_ARTICLES.slice(0, 3);
+  // Get latest 4 news articles for homepage
+  const latestNews = NEWS_ARTICLES.slice(0, 4);
 
   return (
     <main>
@@ -33,12 +33,12 @@ export default function HomePage() {
       <TripleFeatureCards />
       <CEOMessage />
       <InfoCards />
+      <LatestNews articles={latestNews} />
       <ServicesOverview />
       <StatsSection />
       <EquipmentShowcase />
       <ClientsSection />
       <WhyChooseUs />
-      <NewsGrid articles={latestNews} columns={3} showExcerpt={true} />
       <div className="py-16 bg-gray-50">
         <div className="container">
           <NewsletterSignup />
