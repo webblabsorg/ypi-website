@@ -2,9 +2,9 @@
 
 import * as React from "react";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
 import { Search, TrendingUp } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { SearchModal } from "@/components/shared/SearchModal";
 import { cn } from "@/lib/utils";
 
 interface CommodityPrice {
@@ -17,7 +17,7 @@ interface CommodityPrice {
 }
 
 export function TopBar() {
-  const router = useRouter();
+  const [searchModalOpen, setSearchModalOpen] = React.useState(false);
   const [commodities, setCommodities] = React.useState<CommodityPrice[]>([
     { name: "Gold", displayName: "SPOT GOLD", symbol: "XAU", price: 2650.50, change: 12.30, changePercent: 0.47 },
     { name: "Copper", displayName: "COPPER", symbol: "HG", price: 4.15, change: -0.02, changePercent: -0.48 },
@@ -52,10 +52,6 @@ export function TopBar() {
     }, 8000);
     return () => clearInterval(interval);
   }, [commodities.length]);
-
-  const handleSearchClick = () => {
-    router.push('/search');
-  };
 
   const currentCommodity = commodities[currentIndex];
   const isPositive = currentCommodity.change >= 0;
@@ -95,7 +91,7 @@ export function TopBar() {
           <Button
             variant="ghost"
             size="icon"
-            onClick={handleSearchClick}
+            onClick={() => setSearchModalOpen(true)}
             aria-label="Search"
             className="h-7 w-7 sm:h-8 sm:w-8 text-white hover:text-gold-400 hover:bg-white/10"
           >
@@ -103,6 +99,9 @@ export function TopBar() {
           </Button>
         </div>
       </div>
+
+      {/* Search Modal */}
+      <SearchModal open={searchModalOpen} onOpenChange={setSearchModalOpen} />
     </div>
   );
 }
