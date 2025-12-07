@@ -66,13 +66,13 @@ export function TripleFeatureCards() {
                   {feature.description}
                 </p>
 
-                {/* Link */}
+                {/* Link - Arrow Only */}
                 <Link
                   href={feature.link}
-                  className="inline-flex items-center gap-2 text-gold-600 hover:text-gold-700 font-semibold group/link"
+                  className="inline-flex items-center text-gold-600 hover:text-gold-700 group/link"
+                  aria-label={feature.linkText}
                 >
-                  <span>{feature.linkText}</span>
-                  <ArrowRight className="h-5 w-5 group-hover/link:translate-x-1 transition-transform duration-300" />
+                  <ArrowRight className="h-6 w-6 group-hover/link:translate-x-1 transition-transform duration-300" />
                 </Link>
               </div>
             </div>

@@ -3,6 +3,7 @@ import { HeroSlider } from "@/components/sections/HeroSlider";
 import { OverlapCards } from "@/components/sections/OverlapCards";
 import { TripleFeatureCards } from "@/components/sections/TripleFeatureCards";
 import { CEOMessage } from "@/components/sections/CEOMessage";
+import { InfoCards } from "@/components/sections/InfoCards";
 import { ServicesOverview } from "@/components/sections/ServicesOverview";
 import { StatsSection } from "@/components/sections/StatsSection";
 import { EquipmentShowcase } from "@/components/sections/EquipmentShowcase";
@@ -31,6 +32,7 @@ export default function HomePage() {
       <OverlapCards />
       <TripleFeatureCards />
       <CEOMessage />
+      <InfoCards />
       <ServicesOverview />
       <StatsSection />
       <EquipmentShowcase />

@@ -29,7 +29,7 @@ export function CEOMessage() {
             </div>
 
             {/* Quote Text */}
-            <blockquote className="text-xl md:text-2xl lg:text-3xl font-normal text-gray-900 leading-relaxed mb-8">
+            <blockquote className="text-lg md:text-xl lg:text-2xl font-normal text-gray-900 leading-relaxed mb-8">
               Since our founding in 2017, we&apos;ve built Yellow Power International on a foundation of excellence, safety, and integrity. Our commitment to delivering world-class drilling and mining support services across West Africa is matched only by our dedication to our people and the communities we serve. Together, we&apos;re powering Africa&apos;s mining future.
             </blockquote>
 
@@ -44,7 +44,7 @@ export function CEOMessage() {
                 href="/about/founder"
                 className="inline-flex items-center gap-2 text-gold-600 hover:text-gold-700 font-semibold text-lg group"
               >
-                <span>Learn more about our journey</span>
+                <span>Find out more</span>
                 <ArrowRight className="h-5 w-5 group-hover:translate-x-1 transition-transform duration-300" />
               </Link>
             </div>
