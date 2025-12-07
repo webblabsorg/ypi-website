@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { ArrowRight, Calendar, Download } from "lucide-react";
+import { ArrowRight, Download } from "lucide-react";
 import Image from "next/image";
 
 interface Event {
