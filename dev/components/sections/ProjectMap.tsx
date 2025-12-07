@@ -3,69 +3,31 @@
 import { MapPin } from "lucide-react";
 
 export function ProjectMap() {
-  // Static map with West Africa focus showing Ghana, Mali, and Burkina Faso
+  // Static, fully local map-style card highlighting Ghana, Mali, and Burkina Faso
   return (
-    <div className="relative w-full h-[500px] rounded-2xl overflow-hidden shadow-lg bg-gray-100">
-      {/* Static map image using OpenStreetMap embed */}
-      <iframe
-        src="https://www.openstreetmap.org/export/embed.html?bbox=-15.0,3.0,5.0,18.0&layer=mapnik&marker=7.9465,-1.0232&marker=17.5707,-3.9962&marker=12.3686,-1.5275"
-        style={{ 
-          border: 0, 
-          width: "100%", 
-          height: "100%",
-          filter: "grayscale(0%)"
-        }}
-        title="YPI Operations Map"
-        loading="lazy"
-      />
-      
-      {/* Custom overlay pins */}
-      <div className="absolute inset-0 pointer-events-none">
-        {/* Ghana Pin - Lower center-left */}
-        <div className="absolute" style={{ left: '42%', top: '68%' }}>
-          <div className="relative pointer-events-auto">
-            <div className="w-10 h-10 rounded-full flex items-center justify-center shadow-xl border-4 border-white" 
-                 style={{ background: 'linear-gradient(135deg, #059669 0%, #10B981 100%)' }}>
-              <MapPin className="h-5 w-5 text-white fill-white" />
-            </div>
-            <div className="absolute left-12 top-1/2 -translate-y-1/2 bg-white px-3 py-1.5 rounded-lg shadow-lg whitespace-nowrap">
-              <p className="text-sm font-bold text-navy">Ghana</p>
-            </div>
-          </div>
+    <div className="relative w-full h-[500px] rounded-2xl overflow-hidden shadow-lg bg-gradient-to-br from-blue-900 via-blue-700 to-blue-500">
+      {/* Ghana */}
+      <div className="absolute left-[18%] bottom-[20%] flex items-center gap-2">
+        <div className="flex h-8 w-8 items-center justify-center rounded-full bg-gold-500 text-white shadow-md">
+          <MapPin className="h-4 w-4" />
         </div>
-
-        {/* Mali Pin - Upper center */}
-        <div className="absolute" style={{ left: '40%', top: '28%' }}>
-          <div className="relative pointer-events-auto">
-            <div className="w-10 h-10 rounded-full flex items-center justify-center shadow-xl border-4 border-white" 
-                 style={{ background: 'linear-gradient(135deg, #059669 0%, #10B981 100%)' }}>
-              <MapPin className="h-5 w-5 text-white fill-white" />
-            </div>
-            <div className="absolute left-12 top-1/2 -translate-y-1/2 bg-white px-3 py-1.5 rounded-lg shadow-lg whitespace-nowrap">
-              <p className="text-sm font-bold text-navy">Mali</p>
-            </div>
-          </div>
-        </div>
-
-        {/* Burkina Faso Pin - Center */}
-        <div className="absolute" style={{ left: '48%', top: '48%' }}>
-          <div className="relative pointer-events-auto">
-            <div className="w-10 h-10 rounded-full flex items-center justify-center shadow-xl border-4 border-white" 
-                 style={{ background: 'linear-gradient(135deg, #059669 0%, #10B981 100%)' }}>
-              <MapPin className="h-5 w-5 text-white fill-white" />
-            </div>
-            <div className="absolute left-12 top-1/2 -translate-y-1/2 bg-white px-3 py-1.5 rounded-lg shadow-lg whitespace-nowrap">
-              <p className="text-sm font-bold text-navy">Burkina Faso</p>
-            </div>
-          </div>
-        </div>
+        <span className="text-xs sm:text-sm font-semibold text-white">Ghana</span>
       </div>
 
-      {/* Attribution */}
-      <div className="absolute bottom-2 right-2 bg-white/90 px-2 py-1 rounded text-xs text-gray-600">
-        <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener noreferrer" className="hover:text-navy">
-          © OpenStreetMap
-        </a>
+      {/* Mali */}
+      <div className="absolute left-1/2 top-[22%] flex -translate-x-1/2 items-center gap-2">
+        <div className="flex h-8 w-8 items-center justify-center rounded-full bg-gold-500 text-white shadow-md">
+          <MapPin className="h-4 w-4" />
+        </div>
+        <span className="text-xs sm:text-sm font-semibold text-white">Mali</span>
+      </div>
+
+      {/* Burkina Faso */}
+      <div className="absolute right-[18%] bottom-[28%] flex items-center gap-2">
+        <div className="flex h-8 w-8 items-center justify-center rounded-full bg-gold-500 text-white shadow-md">
+          <MapPin className="h-4 w-4" />
+        </div>
+        <span className="text-xs sm:text-sm font-semibold text-white">Burkina Faso</span>
       </div>
     </div>
   );
