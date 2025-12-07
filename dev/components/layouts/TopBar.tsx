@@ -3,7 +3,7 @@
 import * as React from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { Search, TrendingUp } from "lucide-react";
+import { Search, TrendingUp, FileText } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
@@ -62,40 +62,45 @@ export function TopBar() {
 
   return (
     <div className="fixed top-0 left-0 right-0 z-50 w-full border-b border-white/10 bg-gray-900/95 backdrop-blur-sm text-white shadow-md">
-      <div className="container flex h-10 items-center justify-between px-4">
+      <div className="container flex h-10 items-center justify-between px-2 sm:px-4">
         {/* Left: Commodity Ticker */}
-        <div className="flex items-center gap-3 text-sm">
-          <TrendingUp className="h-4 w-4 text-gold-500" />
-          <div className="flex items-center gap-2 font-semibold">
-            <span className="text-gold-500">{currentCommodity.displayName}</span>
+        <div className="flex items-center gap-2 sm:gap-3 text-xs sm:text-sm">
+          <TrendingUp className="h-3 w-3 sm:h-4 sm:w-4 text-gold-500 flex-shrink-0" />
+          <div className="flex items-center gap-1 sm:gap-2 font-semibold">
+            <span className="text-gold-500 hidden sm:inline">{currentCommodity.displayName}</span>
+            <span className="text-gold-500 sm:hidden">{currentCommodity.symbol}</span>
             <span className="text-white">${currentCommodity.price.toFixed(2)}</span>
             <span className={cn(
-              "text-xs flex items-center gap-1 font-medium",
+              "text-[10px] sm:text-xs flex items-center gap-0.5 sm:gap-1 font-medium hidden xs:flex",
               isPositive ? "text-green-400" : "text-red-400"
             )}>
               {isPositive ? "+" : ""}{currentCommodity.change.toFixed(2)} 
-              ({isPositive ? "+" : ""}{currentCommodity.changePercent.toFixed(2)}%)
+              <span className="hidden sm:inline">
+                ({isPositive ? "+" : ""}{currentCommodity.changePercent.toFixed(2)}%)
+              </span>
             </span>
           </div>
         </div>
 
         {/* Right: Publications & Search */}
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-2 sm:gap-3">
           <Link 
             href="/publications" 
-            className="text-xs font-medium hover:text-gold-400 transition-colors uppercase tracking-wide text-white"
+            className="text-white hover:text-gold-400 transition-colors"
+            aria-label="Publications"
+            title="Publications"
           >
-            PUBLICATIONS
+            <FileText className="h-4 w-4 sm:h-5 sm:w-5" />
           </Link>
-          <span className="text-gray-500">|</span>
+          <span className="text-gray-500 hidden sm:inline">|</span>
           <Button
             variant="ghost"
             size="icon"
             onClick={handleSearchClick}
             aria-label="Search"
-            className="h-8 w-8 text-white hover:text-gold-400 hover:bg-white/10"
+            className="h-7 w-7 sm:h-8 sm:w-8 text-white hover:text-gold-400 hover:bg-white/10"
           >
-            <Search className="h-4 w-4" />
+            <Search className="h-3.5 w-3.5 sm:h-4 sm:w-4" />
           </Button>
         </div>
       </div>

@@ -11,7 +11,6 @@ import {
   NavigationMenuLink,
   NavigationMenuList,
   NavigationMenuTrigger,
-  navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu";
 import { cn } from "@/lib/utils";
 import { MAIN_NAV } from "@/lib/constants/navigation";
@@ -23,10 +22,10 @@ interface HeaderProps {
 export function Header({ onMobileMenuToggle }: HeaderProps) {
   return (
     <header className="fixed top-10 z-50 w-full border-b border-white/10 bg-navy-900/90 backdrop-blur-md text-white shadow-lg">
-      <div className="container flex h-16 items-center gap-2">
+      <div className="container flex h-14 sm:h-16 items-center gap-2 px-2 sm:px-4">
         {/* Logo */}
-        <Link href="/" className="flex items-center mr-4 flex-shrink-0">
-          <span className="font-display text-2xl font-extrabold text-gold-400 tracking-tight hover:text-gold-300 transition-colors">
+        <Link href="/" className="flex items-center mr-2 sm:mr-4 flex-shrink-0">
+          <span className="font-display text-xl sm:text-2xl font-extrabold text-gold-400 tracking-tight hover:text-gold-300 transition-colors">
             YPI
           </span>
         </Link>
@@ -34,15 +33,15 @@ export function Header({ onMobileMenuToggle }: HeaderProps) {
         {/* Desktop Navigation */}
         <nav className="hidden lg:flex flex-1 justify-center">
           <NavigationMenu>
-            <NavigationMenuList className="gap-1">
+            <NavigationMenuList className="gap-2">
               {MAIN_NAV.map((item) =>
                 item.children ? (
                   <NavigationMenuItem key={item.title}>
-                    <NavigationMenuTrigger className="text-xs h-9 px-2.5 font-medium text-white hover:text-gold-400">
+                    <NavigationMenuTrigger className="h-10 px-4 text-sm font-semibold text-white hover:text-gold-400 bg-transparent hover:bg-white/10 data-[state=open]:bg-white/10 data-[state=open]:text-gold-400 border-0">
                       {item.title}
                     </NavigationMenuTrigger>
                     <NavigationMenuContent>
-                      <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px]">
+                      <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px] bg-white">
                         {item.children.map((child) => (
                           <ListItem
                             key={child.title}
@@ -58,7 +57,7 @@ export function Header({ onMobileMenuToggle }: HeaderProps) {
                 ) : (
                   <NavigationMenuItem key={item.title}>
                     <Link href={item.href} legacyBehavior passHref>
-                      <NavigationMenuLink className={cn(navigationMenuTriggerStyle(), "text-xs h-9 px-2.5 font-medium text-white hover:text-gold-400")}>
+                      <NavigationMenuLink className="inline-flex h-10 items-center justify-center rounded-md px-4 text-sm font-semibold text-white hover:text-gold-400 bg-transparent hover:bg-white/10 transition-colors">
                         {item.title}
                       </NavigationMenuLink>
                     </Link>
@@ -70,8 +69,8 @@ export function Header({ onMobileMenuToggle }: HeaderProps) {
         </nav>
 
         {/* Right Actions */}
-        <div className="flex items-center justify-end gap-2 ml-auto">
-          <Button variant="default" size="sm" className="hidden lg:inline-flex bg-gold-500 hover:bg-gold-600 text-white font-semibold shadow-lg" asChild>
+        <div className="flex items-center justify-end gap-1 sm:gap-2 ml-auto">
+          <Button variant="default" size="sm" className="hidden sm:inline-flex bg-gold-500 hover:bg-gold-600 text-white font-semibold shadow-lg text-xs px-3 py-2" asChild>
             <Link href="/contact">GET QUOTE</Link>
           </Button>
           
@@ -79,7 +78,7 @@ export function Header({ onMobileMenuToggle }: HeaderProps) {
           <Button
             variant="ghost"
             size="icon"
-            className="lg:hidden"
+            className="lg:hidden h-9 w-9 text-white hover:text-gold-400 hover:bg-white/10"
             onClick={onMobileMenuToggle}
             aria-label="Toggle menu"
           >
