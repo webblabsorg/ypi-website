@@ -42,7 +42,7 @@ export default function CareersPage() {
   return (
     <main>
       {/* Hero */}
-      <section className="bg-gradient-to-br from-navy via-navy-600 to-indigo-900 text-white py-20">
+      <section className="text-white py-20" style={{ backgroundColor: '#003087' }}>
         <div className="container">
           <div className="max-w-4xl mx-auto text-center">
             <Briefcase className="h-16 w-16 mx-auto mb-6 text-gold" />
