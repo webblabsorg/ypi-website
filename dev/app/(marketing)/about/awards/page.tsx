@@ -128,7 +128,7 @@ export default function AwardsPage() {
       </section>
 
       {/* Commitment */}
-      <section className="py-16 bg-navy text-white">
+      <section className="py-16 text-white" style={{ backgroundColor: '#003087' }}>
         <div className="container max-w-3xl text-center">
           <h2 className="text-3xl font-bold mb-4">
             Our Commitment to Excellence

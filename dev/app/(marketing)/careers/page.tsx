@@ -173,7 +173,11 @@ export default function CareersPage() {
             <Button size="lg" className="bg-gold hover:bg-gold-600 text-navy" asChild>
               <Link href="/careers/training">Training & Development</Link>
             </Button>
-            <Button size="lg" variant="outline" className="border-white text-white hover:bg-white/10" asChild>
+            <Button
+              size="lg"
+              className="bg-white text-navy border-white hover:bg-white hover:text-navy"
+              asChild
+            >
               <Link href="/careers/application-process">Application Process</Link>
             </Button>
             <Button

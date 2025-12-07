@@ -90,7 +90,7 @@ export default function HistoryPage() {
       </section>
 
       {/* Stats */}
-      <section className="py-16 bg-navy text-white">
+      <section className="py-16 text-white" style={{ backgroundColor: '#003087' }}>
         <div className="container">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-4xl mx-auto text-center">
             <div>

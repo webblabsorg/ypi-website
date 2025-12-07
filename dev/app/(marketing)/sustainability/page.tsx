@@ -157,7 +157,7 @@ export default function SustainabilityPage() {
       <ImpactMetrics focus="all" showCharts={false} />
 
       {/* UN SDGs Alignment */}
-      <section className="py-16 bg-navy text-white">
+      <section className="py-16 text-white" style={{ backgroundColor: '#003087' }}>
         <div className="container max-w-6xl">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold mb-4">Aligned with UN Sustainable Development Goals</h2>
