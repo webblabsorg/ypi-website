@@ -39,9 +39,9 @@ const cards: CardItem[] = [
 
 export function OverlapCards() {
   return (
-    <section className="relative -mt-20 z-20">
+    <section className="relative -mt-20 z-40">
       <div className="container">
-        <div className="bg-white rounded-xl shadow-2xl overflow-hidden">
+        <div className="bg-white rounded-xl shadow-2xl overflow-hidden border-0">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
             {cards.map((card, index) => (
               <Link
