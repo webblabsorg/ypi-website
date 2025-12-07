@@ -148,6 +148,21 @@ export function HeroSlider() {
         </div>
       ))}
 
+      {/* Vertical Dividers - Right Side */}
+      <div className="absolute right-8 md:right-12 top-1/2 -translate-y-1/2 z-30 flex flex-col gap-4">
+        {SLIDES.map((slide, index) => (
+          <div
+            key={slide.id}
+            className={cn(
+              "w-px transition-all duration-300",
+              index === currentSlide
+                ? "h-16 bg-white"
+                : "h-8 bg-white/40"
+            )}
+          />
+        ))}
+      </div>
+
       {/* Dot Navigation */}
       <div className="absolute bottom-8 md:bottom-12 left-1/2 -translate-x-1/2 z-30 flex gap-3">
         {SLIDES.map((slide, index) => (
