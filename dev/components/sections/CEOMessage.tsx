@@ -30,7 +30,7 @@ export function CEOMessage() {
 
             {/* Quote Text */}
             <blockquote className="text-xl md:text-2xl lg:text-3xl font-normal text-gray-900 leading-relaxed mb-8">
-              Since our founding in 2017, we've built Yellow Power International on a foundation of excellence, safety, and integrity. Our commitment to delivering world-class drilling and mining support services across West Africa is matched only by our dedication to our people and the communities we serve. Together, we're powering Africa's mining future.
+              Since our founding in 2017, we&apos;ve built Yellow Power International on a foundation of excellence, safety, and integrity. Our commitment to delivering world-class drilling and mining support services across West Africa is matched only by our dedication to our people and the communities we serve. Together, we&apos;re powering Africa&apos;s mining future.
             </blockquote>
 
             {/* Closing Quote Mark */}

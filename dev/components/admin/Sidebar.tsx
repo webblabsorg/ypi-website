@@ -16,7 +16,7 @@ import {
   Wrench,
   Users,
   Inbox,
-  Image,
+  Image as ImageIcon,
   BarChart3,
   Settings,
   ChevronRight,
@@ -80,7 +80,7 @@ const navItems: NavItem[] = [
   {
     title: 'Media Library',
     href: '/admin/media',
-    icon: <Image className="h-5 w-5" />,
+    icon: <ImageIcon className="h-5 w-5" />,
   },
   {
     title: 'Analytics',
