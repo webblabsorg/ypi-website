@@ -4,7 +4,7 @@ import * as React from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
-import { ChevronLeft, ChevronRight, ArrowRight } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 interface Slide {
@@ -60,10 +60,6 @@ export function HeroSlider() {
     setCurrentSlide((prev) => (prev + 1) % SLIDES.length);
   }, []);
 
-  const prevSlide = React.useCallback(() => {
-    setCurrentSlide((prev) => (prev - 1 + SLIDES.length) % SLIDES.length);
-  }, []);
-
   const goToSlide = (index: number) => {
     setCurrentSlide(index);
     setIsAutoPlaying(false);
@@ -83,12 +79,6 @@ export function HeroSlider() {
       }
     };
   }, [isAutoPlaying, nextSlide]);
-
-  // Pause auto-play on user interaction
-  const handleManualNavigation = (action: () => void) => {
-    setIsAutoPlaying(false);
-    action();
-  };
 
   return (
     <section className="relative w-full h-screen overflow-hidden">
@@ -157,22 +147,6 @@ export function HeroSlider() {
           </div>
         </div>
       ))}
-
-      {/* Navigation Arrows */}
-      <button
-        onClick={() => handleManualNavigation(prevSlide)}
-        className="absolute left-4 md:left-8 top-1/2 -translate-y-1/2 z-30 bg-white/20 hover:bg-white/30 backdrop-blur-sm text-white p-3 rounded-full transition-all duration-300 hover:scale-110"
-        aria-label="Previous slide"
-      >
-        <ChevronLeft className="h-6 w-6 md:h-8 md:w-8" />
-      </button>
-      <button
-        onClick={() => handleManualNavigation(nextSlide)}
-        className="absolute right-4 md:right-8 top-1/2 -translate-y-1/2 z-30 bg-white/20 hover:bg-white/30 backdrop-blur-sm text-white p-3 rounded-full transition-all duration-300 hover:scale-110"
-        aria-label="Next slide"
-      >
-        <ChevronRight className="h-6 w-6 md:h-8 md:w-8" />
-      </button>
 
       {/* Dot Navigation */}
       <div className="absolute bottom-8 md:bottom-12 left-1/2 -translate-x-1/2 z-30 flex gap-3">
