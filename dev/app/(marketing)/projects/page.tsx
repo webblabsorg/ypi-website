@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import { ProjectCard } from "@/components/sections/ProjectCard";
 import { ProjectFilter, type FilterValues } from "@/components/sections/ProjectFilter";
+import { ProjectMap } from "@/components/sections/ProjectMap";
 import { PROJECTS } from "@/lib/constants/projects";
 import { MapPin } from "lucide-react";
 
@@ -168,33 +169,9 @@ export default function ProjectsPage() {
             </p>
           </div>
 
-          {/* Static map-style card with pinned regions (no external dependencies) */}
+          {/* Interactive OpenStreetMap */}
           <div className="rounded-xl bg-gray-100 p-6 shadow-lg">
-            <div className="relative w-full aspect-[16/9] rounded-lg bg-gradient-to-br from-blue-900 via-blue-700 to-blue-500 overflow-hidden">
-              {/* Ghana */}
-              <div className="absolute left-[15%] bottom-[22%] flex items-center gap-2">
-                <div className="flex h-6 w-6 items-center justify-center rounded-full bg-gold-500 text-white shadow-md">
-                  <MapPin className="h-3 w-3" />
-                </div>
-                <span className="text-xs sm:text-sm font-semibold text-white">Ghana</span>
-              </div>
-
-              {/* Mali */}
-              <div className="absolute left-1/2 top-[20%] flex -translate-x-1/2 items-center gap-2">
-                <div className="flex h-6 w-6 items-center justify-center rounded-full bg-gold-500 text-white shadow-md">
-                  <MapPin className="h-3 w-3" />
-                </div>
-                <span className="text-xs sm:text-sm font-semibold text-white">Mali</span>
-              </div>
-
-              {/* Burkina Faso */}
-              <div className="absolute right-[15%] bottom-[26%] flex items-center gap-2">
-                <div className="flex h-6 w-6 items-center justify-center rounded-full bg-gold-500 text-white shadow-md">
-                  <MapPin className="h-3 w-3" />
-                </div>
-                <span className="text-xs sm:text-sm font-semibold text-white">Burkina Faso</span>
-              </div>
-            </div>
+            <ProjectMap projects={COUNTRY_PROJECTS} />
 
             {/* Key regions list */}
             <div className="mt-6 grid gap-6 md:grid-cols-3">

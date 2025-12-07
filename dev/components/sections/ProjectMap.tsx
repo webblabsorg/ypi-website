@@ -1,9 +1,7 @@
-'use client';
+"use client";
 
-import React, { useEffect, useRef, useState } from 'react';
-import mapboxgl from 'mapbox-gl';
-import 'mapbox-gl/dist/mapbox-gl.css';
-import { MapPin, X } from 'lucide-react';
+import { useEffect, useRef, useState } from "react";
+import { MapPin } from "lucide-react";
 
 interface ProjectLocation {
   id: string;
@@ -11,194 +9,143 @@ interface ProjectLocation {
   location: string;
   services: string[];
   status: string;
-  coordinates: {
-    lat: number;
-    lng: number;
-  };
-  year?: string;
+  coordinates: { lat: number; lng: number };
+  year: string;
 }
 
 interface ProjectMapProps {
   projects: ProjectLocation[];
-  height?: string;
-  zoom?: number;
 }
 
-export function ProjectMap({ projects, height = '600px', zoom = 5 }: ProjectMapProps) {
+export function ProjectMap({ projects }: ProjectMapProps) {
   const mapContainer = useRef<HTMLDivElement>(null);
-  const map = useRef<mapboxgl.Map | null>(null);
-  const [selectedProject, setSelectedProject] = useState<ProjectLocation | null>(null);
-
-  const mapboxToken = process.env.NEXT_PUBLIC_MAPBOX_TOKEN;
+  const [mapLoaded, setMapLoaded] = useState(false);
+  const [mapError, setMapError] = useState<string | null>(null);
 
   useEffect(() => {
-    if (!mapContainer.current || map.current || !mapboxToken) return;
+    if (!mapContainer.current) return;
 
-    try {
-      mapboxgl.accessToken = mapboxToken;
+    // Load Leaflet dynamically (OpenStreetMap library)
+    const loadMap = async () => {
+      try {
+        // Dynamically import Leaflet
+        const L = (await import("leaflet")).default;
 
-      // Center on Ghana (approximate center of projects)
-      map.current = new mapboxgl.Map({
-        container: mapContainer.current,
-        style: 'mapbox://styles/mapbox/streets-v12',
-        center: [-1.5, 7.5], // Ghana center
-        zoom: zoom,
-      });
+        // Import Leaflet CSS
+        const link = document.createElement("link");
+        link.rel = "stylesheet";
+        link.href = "https://unpkg.com/leaflet@1.9.4/dist/leaflet.css";
+        document.head.appendChild(link);
 
-      map.current.on('load', () => {
-        // Add markers for each project
-        projects.forEach((project) => {
-          if (!map.current) return;
+        // Wait for CSS to load
+        await new Promise(resolve => setTimeout(resolve, 100));
 
-          // Create custom marker element
-          const el = document.createElement('div');
-          el.className = 'project-marker';
-          el.style.width = '40px';
-          el.style.height = '40px';
-          el.style.borderRadius = '50%';
-          el.style.backgroundColor = '#FDB714'; // Gold color
-          el.style.border = '3px solid white';
-          el.style.boxShadow = '0 2px 8px rgba(0,0,0,0.3)';
-          el.style.cursor = 'pointer';
-          el.style.display = 'flex';
-          el.style.alignItems = 'center';
-          el.style.justifyContent = 'center';
-          el.style.transition = 'transform 0.2s';
+        // Initialize map centered on West Africa
+        if (!mapContainer.current) return;
+        const map = L.map(mapContainer.current).setView([10.0, -2.0], 5);
 
-          // Add icon
-          el.innerHTML = '<svg width="20" height="20" viewBox="0 0 24 24" fill="white"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>';
+        // Add OpenStreetMap tiles
+        L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+          attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+          maxZoom: 19,
+        }).addTo(map);
 
-          el.addEventListener('mouseenter', () => {
-            el.style.transform = 'scale(1.2)';
-          });
-
-          el.addEventListener('mouseleave', () => {
-            el.style.transform = 'scale(1)';
-          });
-
-          el.addEventListener('click', () => {
-            setSelectedProject(project);
-            map.current?.flyTo({
-              center: [project.coordinates.lng, project.coordinates.lat],
-              zoom: 10,
-              duration: 1500,
-            });
-          });
-
-          // Add marker to map
-          new mapboxgl.Marker(el)
-            .setLngLat([project.coordinates.lng, project.coordinates.lat])
-            .addTo(map.current);
+        // Custom icon for markers (gold pins)
+        const goldIcon = L.divIcon({
+          className: "custom-pin",
+          html: `
+            <div style="position: relative; width: 40px; height: 40px;">
+              <div style="
+                position: absolute;
+                width: 30px;
+                height: 30px;
+                background: linear-gradient(135deg, #FDB714 0%, #F59E0B 100%);
+                border-radius: 50%;
+                border: 3px solid white;
+                box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+              ">
+                <svg width="16" height="16" viewBox="0 0 20 20" fill="white">
+                  <path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"/>
+                </svg>
+              </div>
+            </div>
+          `,
+          iconSize: [40, 40],
+          iconAnchor: [20, 20],
         });
 
-        // Add navigation controls
-        if (map.current) {
-          map.current.addControl(new mapboxgl.NavigationControl(), 'top-right');
+        // Add markers for each project
+        projects.forEach((project) => {
+          const marker = L.marker([project.coordinates.lat, project.coordinates.lng], {
+            icon: goldIcon,
+          }).addTo(map);
 
-          // Fit bounds to show all projects
-          if (projects.length > 0) {
-            const bounds = new mapboxgl.LngLatBounds();
-            projects.forEach((project) => {
-              bounds.extend([project.coordinates.lng, project.coordinates.lat]);
-            });
-            map.current.fitBounds(bounds, { padding: 50 });
-          }
+          // Add popup with project info
+          marker.bindPopup(`
+            <div style="padding: 8px; min-width: 200px;">
+              <h3 style="font-weight: 600; color: #003087; margin-bottom: 4px; font-size: 16px;">
+                ${project.name}
+              </h3>
+              <p style="color: #6B7280; font-size: 14px; margin: 4px 0;">
+                ${project.location}
+              </p>
+              <p style="color: #059669; font-size: 12px; font-weight: 600; margin: 4px 0;">
+                ${project.status} · Since ${project.year}
+              </p>
+              <p style="color: #6B7280; font-size: 12px; margin: 4px 0;">
+                ${project.services.join(", ")}
+              </p>
+            </div>
+          `);
+        });
+
+        // Fit map to show all markers
+        if (projects.length > 0) {
+          const bounds = L.latLngBounds(
+            projects.map((project) => [project.coordinates.lat, project.coordinates.lng])
+          );
+          map.fitBounds(bounds, { padding: [50, 50] });
         }
-      });
-    } catch (error) {
-      console.error('Error initializing map:', error);
-    }
 
-    return () => {
-      map.current?.remove();
+        setMapLoaded(true);
+      } catch (error) {
+        console.error("Error loading map:", error);
+        setMapError("Failed to load map. Please check your internet connection.");
+      }
     };
-  }, [mapboxToken, projects, zoom]);
 
-  if (!mapboxToken) {
+    loadMap();
+  }, [projects]);
+
+  if (mapError) {
     return (
-      <div
-        className="bg-gray-100 rounded-lg flex items-center justify-center"
-        style={{ height }}
-      >
-        <div className="text-center p-8">
-          <MapPin className="h-12 w-12 mx-auto mb-4 text-gray-400" />
-          <p className="text-gray-600">
-            Map view unavailable. Mapbox token not configured.
-          </p>
+      <div className="w-full h-[500px] bg-gray-100 rounded-2xl flex items-center justify-center text-center p-8">
+        <div>
+          <MapPin className="h-16 w-16 text-gray-400 mx-auto mb-4" />
+          <p className="text-gray-600 max-w-md">{mapError}</p>
         </div>
       </div>
     );
   }
 
   return (
-    <div className="relative rounded-lg overflow-hidden shadow-lg">
-      <div ref={mapContainer} style={{ height }} />
-
-      {/* Project info card */}
-      {selectedProject && (
-        <div className="absolute top-4 left-4 right-4 md:left-auto md:w-96 bg-white rounded-lg shadow-2xl z-10 overflow-hidden">
-          <div className="relative">
-            <div className="bg-gradient-to-r from-gold-500 to-gold-600 text-white p-4">
-              <button
-                onClick={() => setSelectedProject(null)}
-                className="absolute top-2 right-2 p-1 hover:bg-white/20 rounded-full transition-colors"
-                aria-label="Close"
-              >
-                <X className="h-5 w-5" />
-              </button>
-              <h3 className="font-bold text-lg pr-8">{selectedProject.name}</h3>
-              <p className="text-sm text-gold-100">{selectedProject.location}</p>
-            </div>
-            
-            <div className="p-4 space-y-3">
-              {selectedProject.year && (
-                <div>
-                  <p className="text-xs text-gray-500 uppercase font-semibold mb-1">Year</p>
-                  <p className="text-sm text-gray-900">{selectedProject.year}</p>
-                </div>
-              )}
-              
-              <div>
-                <p className="text-xs text-gray-500 uppercase font-semibold mb-1">Status</p>
-                <span className={`inline-block px-2 py-1 text-xs rounded-full ${
-                  selectedProject.status === 'Completed' 
-                    ? 'bg-green-100 text-green-700' 
-                    : selectedProject.status === 'Active'
-                    ? 'bg-blue-100 text-blue-700'
-                    : 'bg-gray-100 text-gray-700'
-                }`}>
-                  {selectedProject.status}
-                </span>
-              </div>
-
-              <div>
-                <p className="text-xs text-gray-500 uppercase font-semibold mb-2">Services</p>
-                <div className="flex flex-wrap gap-1">
-                  {selectedProject.services.map((service, idx) => (
-                    <span
-                      key={idx}
-                      className="px-2 py-1 bg-gray-100 text-gray-700 text-xs rounded"
-                    >
-                      {service}
-                    </span>
-                  ))}
-                </div>
-              </div>
-            </div>
+    <div className="relative">
+      <div
+        ref={mapContainer}
+        className="w-full h-[500px] rounded-2xl overflow-hidden shadow-lg"
+        style={{ minHeight: "500px" }}
+      />
+      {!mapLoaded && (
+        <div className="absolute inset-0 bg-gray-100 rounded-2xl flex items-center justify-center">
+          <div className="text-center">
+            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-gold mx-auto mb-4"></div>
+            <p className="text-gray-600">Loading map...</p>
           </div>
         </div>
       )}
-
-      {/* Legend */}
-      <div className="absolute bottom-4 left-4 bg-white rounded-lg shadow-lg p-3 text-sm">
-        <div className="flex items-center gap-2">
-          <div className="w-4 h-4 rounded-full bg-gold-500 border-2 border-white shadow"></div>
-          <span className="text-gray-700">Project Location</span>
-        </div>
-        <p className="text-xs text-gray-500 mt-2">
-          Click markers for details
-        </p>
-      </div>
     </div>
   );
 }
