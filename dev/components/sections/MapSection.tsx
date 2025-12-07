@@ -38,6 +38,7 @@ export function MapSection({ offices }: MapSectionProps) {
         await new Promise(resolve => setTimeout(resolve, 100));
 
         // Initialize map centered on West Africa
+        if (!mapContainer.current) return;
         const map = L.map(mapContainer.current).setView([10.0, -2.0], 5);
 
         // Add OpenStreetMap tiles

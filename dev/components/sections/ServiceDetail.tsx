@@ -3,7 +3,6 @@
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { CheckCircle2, ArrowRight } from "lucide-react";
-import { ShareButtons } from "@/components/shared/ShareButtons";
 import type { Service } from "@/lib/constants/services";
 import { TechnicalSpecs } from "./TechnicalSpecs";
 import { EquipmentCard } from "@/components/ui/EquipmentCard";
