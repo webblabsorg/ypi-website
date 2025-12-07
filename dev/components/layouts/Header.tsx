@@ -27,9 +27,9 @@ export function Header({ onMobileMenuToggle }: HeaderProps) {
         {/* Logo */}
         <Link href="/" className="flex items-center mr-2 sm:mr-4 flex-shrink-0">
           <Image 
-            src="/images/ypi-logo.jpg" 
-            alt="YPI Logo" 
-            width={80} 
+            src="/images/ypi-logo.png" 
+            alt="YPI - Yellow Power International Logo" 
+            width={120} 
             height={40}
             className="h-8 w-auto sm:h-10"
             priority
