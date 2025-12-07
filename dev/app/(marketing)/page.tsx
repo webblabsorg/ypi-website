@@ -34,17 +34,18 @@ export default function HomePage() {
       <CEOMessage />
       <InfoCards />
       <LatestNews articles={latestNews} />
-      <ServicesOverview />
-      <StatsSection />
-      <EquipmentShowcase />
-      <ClientsSection />
-      <WhyChooseUs />
+      {/* Temporarily hidden sections - coming soon */}
+      {/* <ServicesOverview /> */}
+      {/* <StatsSection /> */}
+      {/* <EquipmentShowcase /> */}
+      {/* <ClientsSection /> */}
+      {/* <WhyChooseUs /> */}
       <div className="py-16 bg-gray-50">
         <div className="container">
           <NewsletterSignup />
         </div>
       </div>
-      <CareersCTA />
+      {/* <CareersCTA /> */}
     </main>
   );
 }
