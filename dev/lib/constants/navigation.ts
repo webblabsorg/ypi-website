@@ -84,6 +84,27 @@ export const MAIN_NAV: NavItem[] = [
     ],
   },
   {
+    title: "PARTNERS",
+    href: "/clients",
+    children: [
+      {
+        title: "Our Clients",
+        href: "/clients",
+        description: "Meet our valued clients and partners",
+      },
+      {
+        title: "Partnership Opportunities",
+        href: "/partnerships",
+        description: "Explore partnership possibilities",
+      },
+      {
+        title: "Supplier Portal",
+        href: "/suppliers",
+        description: "Register as an approved supplier",
+      },
+    ],
+  },
+  {
     title: "SUSTAINABILITY",
     href: "/sustainability",
     children: [
@@ -178,27 +199,6 @@ export const MAIN_NAV: NavItem[] = [
         title: "Video Library",
         href: "/media/videos",
         description: "Company videos and demonstrations",
-      },
-    ],
-  },
-  {
-    title: "PARTNERS",
-    href: "/clients",
-    children: [
-      {
-        title: "Our Clients",
-        href: "/clients",
-        description: "Meet our valued clients and partners",
-      },
-      {
-        title: "Partnership Opportunities",
-        href: "/partnerships",
-        description: "Explore partnership possibilities",
-      },
-      {
-        title: "Supplier Portal",
-        href: "/suppliers",
-        description: "Register as an approved supplier",
       },
     ],
   },

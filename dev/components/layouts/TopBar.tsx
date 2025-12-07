@@ -60,16 +60,16 @@ export function TopBar() {
   const isPositive = currentCommodity.change >= 0;
 
   return (
-    <div className="w-full border-b bg-navy-900 text-white">
-      <div className="container flex h-10 items-center justify-between">
+    <div className="w-full border-b bg-gray-900 text-white shadow-sm">
+      <div className="container flex h-10 items-center justify-between px-4">
         {/* Left: Commodity Ticker */}
         <div className="flex items-center gap-3 text-sm">
-          <TrendingUp className="h-4 w-4 text-gold-400" />
-          <div className="flex items-center gap-2 font-medium">
-            <span className="text-gold-400">{currentCommodity.symbol}</span>
-            <span>${currentCommodity.price.toFixed(2)}</span>
+          <TrendingUp className="h-4 w-4 text-gold-500" />
+          <div className="flex items-center gap-2 font-semibold">
+            <span className="text-gold-500">{currentCommodity.symbol}</span>
+            <span className="text-white">${currentCommodity.price.toFixed(2)}</span>
             <span className={cn(
-              "text-xs flex items-center gap-1",
+              "text-xs flex items-center gap-1 font-medium",
               isPositive ? "text-green-400" : "text-red-400"
             )}>
               {isPositive ? "+" : ""}{currentCommodity.change.toFixed(2)} 
@@ -82,7 +82,7 @@ export function TopBar() {
         <div className="flex items-center gap-4">
           <Link 
             href="/publications" 
-            className="text-sm font-medium hover:text-gold-400 transition-colors uppercase tracking-wide"
+            className="text-sm font-semibold hover:text-gold-400 transition-colors uppercase tracking-wide text-white"
           >
             PUBLICATIONS
           </Link>

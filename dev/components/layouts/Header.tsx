@@ -32,13 +32,13 @@ export function Header({ onMobileMenuToggle }: HeaderProps) {
         </Link>
 
         {/* Desktop Navigation */}
-        <nav className="hidden lg:flex flex-1">
+        <nav className="hidden lg:flex flex-1 justify-center">
           <NavigationMenu>
             <NavigationMenuList className="gap-1">
               {MAIN_NAV.map((item) =>
                 item.children ? (
                   <NavigationMenuItem key={item.title}>
-                    <NavigationMenuTrigger className="text-sm h-9 px-3 font-semibold">
+                    <NavigationMenuTrigger className="text-xs h-9 px-2.5 font-medium">
                       {item.title}
                     </NavigationMenuTrigger>
                     <NavigationMenuContent>
@@ -58,7 +58,7 @@ export function Header({ onMobileMenuToggle }: HeaderProps) {
                 ) : (
                   <NavigationMenuItem key={item.title}>
                     <Link href={item.href} legacyBehavior passHref>
-                      <NavigationMenuLink className={cn(navigationMenuTriggerStyle(), "text-sm h-9 px-3 font-semibold")}>
+                      <NavigationMenuLink className={cn(navigationMenuTriggerStyle(), "text-xs h-9 px-2.5 font-medium")}>
                         {item.title}
                       </NavigationMenuLink>
                     </Link>
