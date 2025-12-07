@@ -61,7 +61,7 @@ export function TopBar() {
   const isPositive = currentCommodity.change >= 0;
 
   return (
-    <div className="w-full border-b bg-gray-900 text-white shadow-sm">
+    <div className="fixed top-0 left-0 right-0 z-50 w-full border-b border-white/10 bg-gray-900/95 backdrop-blur-sm text-white shadow-md">
       <div className="container flex h-10 items-center justify-between px-4">
         {/* Left: Commodity Ticker */}
         <div className="flex items-center gap-3 text-sm">

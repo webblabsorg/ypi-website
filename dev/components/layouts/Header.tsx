@@ -22,11 +22,11 @@ interface HeaderProps {
 
 export function Header({ onMobileMenuToggle }: HeaderProps) {
   return (
-    <header className="sticky top-10 z-40 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+    <header className="fixed top-10 z-50 w-full border-b border-white/10 bg-navy-900/90 backdrop-blur-md text-white shadow-lg">
       <div className="container flex h-16 items-center gap-2">
         {/* Logo */}
         <Link href="/" className="flex items-center mr-4 flex-shrink-0">
-          <span className="font-display text-2xl font-extrabold text-gold-500 tracking-tight">
+          <span className="font-display text-2xl font-extrabold text-gold-400 tracking-tight hover:text-gold-300 transition-colors">
             YPI
           </span>
         </Link>
@@ -38,7 +38,7 @@ export function Header({ onMobileMenuToggle }: HeaderProps) {
               {MAIN_NAV.map((item) =>
                 item.children ? (
                   <NavigationMenuItem key={item.title}>
-                    <NavigationMenuTrigger className="text-xs h-9 px-2.5 font-medium">
+                    <NavigationMenuTrigger className="text-xs h-9 px-2.5 font-medium text-white hover:text-gold-400">
                       {item.title}
                     </NavigationMenuTrigger>
                     <NavigationMenuContent>
@@ -58,7 +58,7 @@ export function Header({ onMobileMenuToggle }: HeaderProps) {
                 ) : (
                   <NavigationMenuItem key={item.title}>
                     <Link href={item.href} legacyBehavior passHref>
-                      <NavigationMenuLink className={cn(navigationMenuTriggerStyle(), "text-xs h-9 px-2.5 font-medium")}>
+                      <NavigationMenuLink className={cn(navigationMenuTriggerStyle(), "text-xs h-9 px-2.5 font-medium text-white hover:text-gold-400")}>
                         {item.title}
                       </NavigationMenuLink>
                     </Link>
@@ -71,7 +71,7 @@ export function Header({ onMobileMenuToggle }: HeaderProps) {
 
         {/* Right Actions */}
         <div className="flex items-center justify-end gap-2 ml-auto">
-          <Button variant="default" size="sm" className="hidden lg:inline-flex bg-gold-500 hover:bg-gold-600 font-semibold" asChild>
+          <Button variant="default" size="sm" className="hidden lg:inline-flex bg-gold-500 hover:bg-gold-600 text-white font-semibold shadow-lg" asChild>
             <Link href="/contact">GET QUOTE</Link>
           </Button>
           
