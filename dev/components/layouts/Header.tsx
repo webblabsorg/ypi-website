@@ -2,6 +2,7 @@
 
 import * as React from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { Menu } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
@@ -25,9 +26,15 @@ export function Header({ onMobileMenuToggle }: HeaderProps) {
       <div className="container flex h-14 sm:h-16 items-center gap-2 px-2 sm:px-4">
         {/* Logo */}
         <Link href="/" className="flex items-center mr-2 sm:mr-4 flex-shrink-0">
-          <span className="font-display text-xl sm:text-2xl font-extrabold text-gold-400 tracking-tight hover:text-gold-300 transition-colors">
-            YPI
-          </span>
+          <Image 
+            src="/images/ypi-logo.jpg" 
+            alt="YPI Logo" 
+            width={80} 
+            height={40}
+            className="h-8 w-auto sm:h-10"
+            priority
+            quality={100}
+          />
         </Link>
 
         {/* Desktop Navigation */}

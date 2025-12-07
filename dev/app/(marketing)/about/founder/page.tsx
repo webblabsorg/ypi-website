@@ -1,4 +1,5 @@
 import type { Metadata} from "next";
+import Image from "next/image";
 import { Quote, Lightbulb, Target, TrendingUp } from "lucide-react";
 import { COMPANY_INFO } from "@/lib/constants/company";
 
@@ -11,7 +12,7 @@ export default function FounderPage() {
   return (
     <main>
       {/* Hero */}
-      <section className="bg-gradient-to-br from-navy via-navy-600 to-navy-700 text-white py-20">
+      <section className="text-white py-20 pt-32" style={{ backgroundColor: '#003087' }}>
         <div className="container">
           <h1 className="text-4xl md:text-5xl font-bold text-center mb-6">
             Founder&apos;s Story
@@ -26,13 +27,16 @@ export default function FounderPage() {
       <section className="py-20">
         <div className="container max-w-5xl">
           <div className="grid md:grid-cols-2 gap-12 items-center">
-            {/* Image Placeholder */}
-            <div className="aspect-[3/4] bg-gradient-to-br from-navy/10 to-gold/10 rounded-2xl flex items-center justify-center border-2 border-dashed border-gray-300">
-              <div className="text-center text-gray-400">
-                <div className="text-6xl font-bold mb-4">{COMPANY_INFO.founder.charAt(0)}</div>
-                <p className="text-sm font-medium">Founder Portrait</p>
-                <p className="text-xs">(To be added)</p>
-              </div>
+            {/* Founder Image */}
+            <div className="aspect-[3/4] rounded-2xl overflow-hidden relative">
+              <Image 
+                src="/images/founder-ganu.jpg"
+                alt="Mr. Emmanuel Kweku Ganu - Founder & CEO"
+                fill
+                className="object-cover"
+                quality={100}
+                priority
+              />
             </div>
 
             {/* Content */}
