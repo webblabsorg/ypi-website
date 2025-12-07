@@ -5,6 +5,7 @@ import { TripleFeatureCards } from "@/components/sections/TripleFeatureCards";
 import { CEOMessage } from "@/components/sections/CEOMessage";
 import { InfoCards } from "@/components/sections/InfoCards";
 import { LatestNews } from "@/components/sections/LatestNews";
+import { EventsAndReports } from "@/components/sections/EventsAndReports";
 // Temporarily hidden sections - uncomment imports when sections are re-enabled
 // import { ServicesOverview } from "@/components/sections/ServicesOverview";
 // import { StatsSection } from "@/components/sections/StatsSection";
@@ -41,6 +42,7 @@ export default function HomePage() {
       {/* <EquipmentShowcase /> */}
       {/* <ClientsSection /> */}
       {/* <WhyChooseUs /> */}
+      <EventsAndReports />
       <div className="py-16 bg-gray-50">
         <div className="container">
           <NewsletterSignup />
