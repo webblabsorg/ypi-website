@@ -41,7 +41,8 @@ export function InfoCards() {
             <Link
               key={index}
               href={card.link}
-              className="group block bg-white rounded-lg overflow-hidden hover:shadow-xl transition-shadow duration-300"
+              className="group block rounded-lg overflow-hidden hover:shadow-xl transition-shadow duration-300"
+              style={{ backgroundColor: '#f2f4f5' }}
             >
               {/* Image */}
               <div className="relative h-56 overflow-hidden">

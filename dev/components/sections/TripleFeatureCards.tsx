@@ -44,7 +44,8 @@ export function TripleFeatureCards() {
           {features.map((feature, index) => (
             <div
               key={index}
-              className="group bg-white rounded-lg overflow-hidden hover:shadow-xl transition-shadow duration-300"
+              className="group rounded-lg overflow-hidden hover:shadow-xl transition-shadow duration-300"
+              style={{ backgroundColor: '#f2f4f5' }}
             >
               {/* Image */}
               <div className="relative h-64 overflow-hidden">
