@@ -23,7 +23,6 @@ export function TopBar() {
     { name: "Copper", displayName: "COPPER", symbol: "HG", price: 4.15, change: -0.02, changePercent: -0.48 },
     { name: "Silver", displayName: "SILVER", symbol: "XAG", price: 31.25, change: 0.45, changePercent: 1.46 }
   ]);
-  const [currentIndex, setCurrentIndex] = React.useState(0);
 
   // Fetch live commodity prices
   const fetchCommodityPrices = React.useCallback(async () => {
@@ -45,37 +44,40 @@ export function TopBar() {
     return () => clearInterval(interval);
   }, [fetchCommodityPrices]);
 
-  // Rotate displayed commodity every 8 seconds
-  React.useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentIndex((prev) => (prev + 1) % commodities.length);
-    }, 8000);
-    return () => clearInterval(interval);
-  }, [commodities.length]);
-
-  const currentCommodity = commodities[currentIndex];
-  const isPositive = currentCommodity.change >= 0;
-
   return (
     <div className="fixed top-0 left-0 right-0 z-50 w-full border-b border-white/10 backdrop-blur-sm text-white shadow-md" style={{ backgroundColor: '#003087' }}>
       <div className="container flex h-10 items-center justify-between px-2 sm:px-4">
         {/* Left: Commodity Ticker */}
-        <div className="flex items-center gap-2 sm:gap-3 text-xs sm:text-sm">
-          <TrendingUp className="h-3 w-3 sm:h-4 sm:w-4 text-gold-500 flex-shrink-0" />
-          <div className="flex items-center gap-1 sm:gap-2 font-semibold">
-            <span className="text-gold-500 hidden sm:inline">{currentCommodity.displayName}</span>
-            <span className="text-gold-500 sm:hidden">{currentCommodity.symbol}</span>
-            <span className="text-white">${currentCommodity.price.toFixed(2)}</span>
-            <span className={cn(
-              "text-[10px] sm:text-xs flex items-center gap-0.5 sm:gap-1 font-medium hidden xs:flex",
-              isPositive ? "text-green-400" : "text-red-400"
-            )}>
-              {isPositive ? "+" : ""}{currentCommodity.change.toFixed(2)} 
-              <span className="hidden sm:inline">
-                ({isPositive ? "+" : ""}{currentCommodity.changePercent.toFixed(2)}%)
-              </span>
-            </span>
-          </div>
+        <div className="flex items-center gap-4 sm:gap-6 text-xs sm:text-sm">
+          {commodities.map((commodity) => {
+            const isPositive = commodity.change >= 0;
+            return (
+              <div key={commodity.symbol} className="flex items-center gap-1 sm:gap-2 font-semibold">
+                <TrendingUp
+                  className={cn(
+                    "h-3 w-3 sm:h-4 sm:w-4 flex-shrink-0",
+                    isPositive ? "text-green-400" : "text-red-400"
+                  )}
+                />
+                <span className="text-gold-500 hidden sm:inline">{commodity.displayName}</span>
+                <span className="text-gold-500 sm:hidden">{commodity.symbol}</span>
+                <span className="text-white">${commodity.price.toFixed(2)}</span>
+                <span
+                  className={cn(
+                    "text-[10px] sm:text-xs flex items-center gap-0.5 sm:gap-1 font-medium hidden xs:flex",
+                    isPositive ? "text-green-400" : "text-red-400"
+                  )}
+                >
+                  {isPositive ? "+" : ""}
+                  {commodity.change.toFixed(2)}
+                  <span className="hidden sm:inline">
+                    ({isPositive ? "+" : ""}
+                    {commodity.changePercent.toFixed(2)}%)
+                  </span>
+                </span>
+              </div>
+            );
+          })}
         </div>
 
         {/* Right: Contact Us & Search */}
