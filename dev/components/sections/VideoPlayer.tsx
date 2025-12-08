@@ -28,7 +28,12 @@ export function VideoPlayer({ video, autoplay = false }: VideoPlayerProps) {
       </CardHeader>
       <CardContent className="p-6">
         <div className="flex items-center gap-2 mb-3">
-          <Badge variant="secondary">{video.category}</Badge>
+          <Badge
+            variant="secondary"
+            className="bg-[#FDB714] text-[#003087] border-transparent hover:bg-[#fbbf24]"
+          >
+            {video.category}
+          </Badge>
           {video.duration && (
             <div className="flex items-center gap-1 text-sm text-gray-500">
               <Clock className="h-4 w-4" />
