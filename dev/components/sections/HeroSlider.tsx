@@ -19,7 +19,7 @@ interface Slide {
 const SLIDES: Slide[] = [
   {
     id: 1,
-    image: "https://images.unsplash.com/photo-1581094794329-c8112a89af12?q=80&w=2070&auto=format&fit=crop",
+    image: "/images/hero/powering-africas-mining-future.jpg",
     headline: "Powering Africa's Mining Future",
     subHeadline: "Comprehensive drilling and mining support services across West Africa since 2017",
     ctaText: "Explore Our Services",
@@ -27,7 +27,7 @@ const SLIDES: Slide[] = [
   },
   {
     id: 2,
-    image: "https://images.unsplash.com/photo-1504307651254-35680f356dfd?q=80&w=2076&auto=format&fit=crop",
+    image: "/images/hero/expert-production-drilling-solutions.jpg",
     headline: "Expert Production Drilling Solutions",
     subHeadline: "Advanced drilling technology and experienced teams delivering excellence in every project",
     ctaText: "View Our Projects",
@@ -35,7 +35,7 @@ const SLIDES: Slide[] = [
   },
   {
     id: 3,
-    image: "https://images.unsplash.com/photo-1590496792942-84da40a8f6e7?q=80&w=2070&auto=format&fit=crop",
+    image: "/images/hero/safety-first-quality-always.jpg",
     headline: "Safety First, Quality Always",
     subHeadline: "Zero harm philosophy with ISO-certified operations and world-class safety standards",
     ctaText: "Our Commitment",
@@ -43,7 +43,7 @@ const SLIDES: Slide[] = [
   },
   {
     id: 4,
-    image: "https://images.unsplash.com/photo-1513828000090-2beaca79912e?q=80&w=2070&auto=format&fit=crop",
+    image: "/images/hero/building-sustainable-mining-communities.jpg",
     headline: "Building Sustainable Mining Communities",
     subHeadline: "Empowering local communities through responsible mining practices and social development",
     ctaText: "Learn More",
