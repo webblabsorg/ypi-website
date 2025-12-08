@@ -258,9 +258,6 @@ export function PowerBot() {
               {isLoading ? <Loader2 className="h-5 w-5 animate-spin" /> : <Send className="h-5 w-5" />}
             </Button>
           </div>
-          <p className="text-xs text-gray-500 mt-2 text-center">
-            Powered by AI • Information may not be perfect
-          </p>
         </div>
       </CardContent>
     </Card>
