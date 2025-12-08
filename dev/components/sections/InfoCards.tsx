@@ -13,19 +13,19 @@ interface InfoCard {
 
 const cards: InfoCard[] = [
   {
-    image: "https://images.unsplash.com/photo-1581094794329-c8112a89af12?q=80&w=800&auto=format&fit=crop",
+    image: "/images/home/info-cards/making-positive-impact.jpg",
     title: "Making a positive impact",
     description: "We are committed to finding new ways of operating more sustainably while delivering world-class drilling and mining support services that are essential for West Africa's mining future.",
     link: "/sustainability"
   },
   {
-    image: "https://images.unsplash.com/photo-1504307651254-35680f356dfd?q=80&w=800&auto=format&fit=crop",
+    image: "/images/home/info-cards/excellence-since-2017excellence-since-2017.jpg",
     title: "Excellence since 2017",
     description: "Since our founding in 2017, we&apos;ve been at the forefront of Ghana&apos;s mining industry, delivering exceptional drilling services and continuously raising standards of operational excellence.",
     link: "/about"
   },
   {
-    image: "https://images.unsplash.com/photo-1590496792942-84da40a8f6e7?q=80&w=800&auto=format&fit=crop",
+    image: "/images/home/info-cards/delivering-for-our-clients.jpg",
     title: "Delivering for our clients",
     description: "Our teams consistently deliver outstanding results for mining operations across West Africa. Learn more about our commitment to safety, quality, and client satisfaction.",
     link: "/projects"

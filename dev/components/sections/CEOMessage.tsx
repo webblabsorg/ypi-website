@@ -12,7 +12,7 @@ export function CEOMessage() {
           {/* Left - Image */}
           <div className="relative h-[400px] md:h-[500px] lg:h-[600px] rounded-2xl overflow-hidden">
             <Image
-              src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?q=80&w=2000&auto=format&fit=crop"
+              src="/images/home/ceo-quote-section.jpg"
               alt="Yellow Power International mining operations"
               fill
               className="object-cover"

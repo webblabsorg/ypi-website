@@ -14,21 +14,21 @@ interface FeatureCard {
 
 const features: FeatureCard[] = [
   {
-    image: "https://images.unsplash.com/photo-1581094794329-c8112a89af12?q=80&w=800&auto=format&fit=crop",
+    image: "/images/home-cards/what-we-deliver.jpg",
     title: "What We Deliver",
     description: "Comprehensive drilling, blasting, and mining support services. From pre-split drilling to load & haul operations, we provide end-to-end solutions that power Africa's mining industry.",
     link: "/services",
     linkText: "Explore Our Services"
   },
   {
-    image: "https://images.unsplash.com/photo-1578662996442-48f60103fc96?q=80&w=800&auto=format&fit=crop",
+    image: "/images/home-cards/where-we-operate.jpg",
     title: "Where We Operate",
     description: "Operating across 3 African countries with our headquarters in Madina, Greater Accra, Ghana. We bring world-class mining support services to West Africa's most dynamic mining regions.",
     link: "/about/global-presence",
     linkText: "View Our Locations"
   },
   {
-    image: "https://images.unsplash.com/photo-1504307651254-35680f356dfd?q=80&w=800&auto=format&fit=crop",
+    image: "/images/home-cards/join-our-team.jpg",
     title: "Join Our Team",
     description: "Building careers in mining excellence since 2017. With over 200 employees, we offer opportunities for growth, professional development, and a commitment to safety first, always.",
     link: "/careers",
