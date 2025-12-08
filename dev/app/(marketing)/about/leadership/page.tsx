@@ -11,11 +11,13 @@ const leaders = [
     name: "Emmanuel Kweku Ganu",
     role: "Founder & Chief Executive Officer",
     bio: "Visionary leader with decades of mining industry experience. Founded YPI in 2017 with a mission to deliver world-class mining support services across Africa.",
+    photo: "/images/leadership/emmanuel-kweku-ganu.jpg",
   },
   {
     name: "Elvis Agobo",
     role: "Operations Manager",
     bio: "20+ years of operational excellence in mining services. Oversees all drilling and hauling operations across our three African locations.",
+    photo: "/images/leadership/elvis-agobo.jpg",
   },
   {
     name: "Abena Osei",
@@ -64,6 +66,7 @@ export default function LeadershipPage() {
                 name={leader.name}
                 role={leader.role}
                 bio={leader.bio}
+                photo={leader.photo}
               />
             ))}
           </div>
