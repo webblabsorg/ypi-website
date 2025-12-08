@@ -51,6 +51,14 @@ export function TopBar() {
         <div className="flex items-center gap-4 sm:gap-6 text-xs sm:text-sm">
           {commodities.map((commodity) => {
             const isPositive = commodity.change >= 0;
+            const formattedPrice = `$${commodity.price.toFixed(2)}`;
+            const formattedChange = isPositive
+              ? `+$${Math.abs(commodity.change).toFixed(2)}`
+              : `($${Math.abs(commodity.change).toFixed(2)})`;
+            const formattedPercent = isPositive
+              ? `+${Math.abs(commodity.changePercent).toFixed(2)}%`
+              : `-${Math.abs(commodity.changePercent).toFixed(2)}%`;
+
             return (
               <div key={commodity.symbol} className="flex items-center gap-1 sm:gap-2 font-semibold">
                 <TrendingUp
@@ -61,18 +69,23 @@ export function TopBar() {
                 />
                 <span className="text-gold-500 hidden sm:inline">{commodity.displayName}</span>
                 <span className="text-gold-500 sm:hidden">{commodity.symbol}</span>
-                <span className="text-white">${commodity.price.toFixed(2)}</span>
+                <span
+                  className={cn(
+                    "text-white",
+                    !isPositive && "text-red-400"
+                  )}
+                >
+                  {formattedPrice}
+                </span>
                 <span
                   className={cn(
                     "text-[10px] sm:text-xs flex items-center gap-0.5 sm:gap-1 font-medium hidden xs:flex",
                     isPositive ? "text-green-400" : "text-red-400"
                   )}
                 >
-                  {isPositive ? "+" : ""}
-                  {commodity.change.toFixed(2)}
+                  {formattedChange}
                   <span className="hidden sm:inline">
-                    ({isPositive ? "+" : ""}
-                    {commodity.changePercent.toFixed(2)}%)
+                    ({formattedPercent})
                   </span>
                 </span>
               </div>
