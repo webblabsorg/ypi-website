@@ -4,6 +4,7 @@ import { OverlapCards } from "@/components/sections/OverlapCards";
 import { TripleFeatureCards } from "@/components/sections/TripleFeatureCards";
 import { CEOMessage } from "@/components/sections/CEOMessage";
 import { InfoCards } from "@/components/sections/InfoCards";
+import { VideoGallery } from "@/components/sections/VideoGallery";
 import { LatestNews } from "@/components/sections/LatestNews";
 import { EventsAndReports } from "@/components/sections/EventsAndReports";
 // Temporarily hidden sections - uncomment imports when sections are re-enabled
@@ -35,6 +36,7 @@ export default function HomePage() {
       <TripleFeatureCards />
       <CEOMessage />
       <InfoCards />
+      <VideoGallery />
       <LatestNews articles={latestNews} />
       {/* Temporarily hidden sections - coming soon */}
       {/* <ServicesOverview /> */}
