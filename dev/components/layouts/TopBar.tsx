@@ -61,7 +61,14 @@ export function TopBar() {
               : `-${Math.abs(commodity.changePercent).toFixed(2)}%`;
 
             return (
-              <div key={commodity.symbol} className="flex items-center gap-1 sm:gap-2 font-semibold">
+              <div
+                key={commodity.symbol}
+                className={cn(
+                  "flex items-center gap-1 sm:gap-2 font-semibold",
+                  // On mobile, only show Spot Gold; show all tickers from the sm breakpoint upwards
+                  commodity.name !== "Gold" && "hidden sm:flex"
+                )}
+              >
                 <TrendingUp
                   className={cn(
                     "h-3 w-3 sm:h-4 sm:w-4 flex-shrink-0",
