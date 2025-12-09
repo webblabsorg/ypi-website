@@ -20,6 +20,12 @@ const leaders = [
     photo: "/images/leadership/elvis-agobo.jpg",
   },
   {
+    name: "Seth A Hackman",
+    role: "Deputy Operations Manager",
+    bio: "Supports operations leadership across all active sites, coordinating field teams and ensuring project delivery meets Yellow Power's safety and performance standards.",
+    photo: "/images/leadership/seth-a-hackman.jpg",
+  },
+  {
     name: "Abena Osei",
     role: "Chief Financial Officer",
     bio: "Strategic financial leadership with expertise in scaling operations. Drives financial planning and sustainable growth initiatives.",
