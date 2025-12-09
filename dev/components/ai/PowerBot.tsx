@@ -280,7 +280,7 @@ export function PowerBot() {
               className="flex-1"
             />
             <Button
-              onClick={handleSend}
+              onClick={() => handleSend()}
               disabled={isLoading || !input.trim()}
               className="bg-gold hover:bg-gold-600 text-navy"
               size="icon"
