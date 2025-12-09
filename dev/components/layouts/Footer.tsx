@@ -1,6 +1,5 @@
 import Link from "next/link";
 import { Separator } from "@/components/ui/separator";
-import { SocialLinks } from "@/components/shared/SocialLinks";
 import { COMPANY_INFO } from "@/lib/constants/company";
 import { FOOTER_NAV } from "@/lib/constants/navigation";
 import { Facebook, Instagram, Linkedin, Youtube, MessageCircle } from "lucide-react";
@@ -135,9 +134,6 @@ export function Footer() {
               </span>
             ))}
           </div>
-
-          {/* Social Links */}
-          <SocialLinks variant="footer" size="md" className="justify-end" />
         </div>
       </div>
     </footer>
