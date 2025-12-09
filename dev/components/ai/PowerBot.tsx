@@ -34,6 +34,14 @@ const WELCOME_MESSAGE = `Hi! I'm PowerBot, your assistant for Yellow Power Inter
 
 How can I assist you today?`;
 
+const SUGGESTED_QUESTIONS: string[] = [
+  'What drilling and mining services does Yellow Power provide?',
+  'In which countries does Yellow Power operate?',
+  'How can I request a project quote?',
+  'How can I partner with Yellow Power?',
+  'How can I contact Yellow Power?'
+];
+
 export function PowerBot() {
   const [isOpen, setIsOpen] = useState(false);
   const [messages, setMessages] = useState<Message[]>([
@@ -61,17 +69,20 @@ export function PowerBot() {
     }
   }, [isOpen]);
 
-  const handleSend = async () => {
-    if (!input.trim() || isLoading) return;
+  const handleSend = async (messageOverride?: string) => {
+    const text = (messageOverride ?? input).trim();
+    if (!text || isLoading) return;
 
     const userMessage: Message = {
       role: 'user',
-      content: input.trim(),
+      content: text,
       timestamp: new Date(),
     };
 
     setMessages((prev) => [...prev, userMessage]);
-    setInput('');
+    if (!messageOverride) {
+      setInput('');
+    }
     setIsLoading(true);
     setSources([]);
 
@@ -206,6 +217,25 @@ export function PowerBot() {
                 </div>
               </div>
             ))}
+
+            {/* Quick-start suggested questions shown only at the beginning */}
+            {messages.length === 1 && !isLoading && (
+              <div className="mt-2 space-y-2">
+                <p className="text-xs text-gray-500">You can start with one of these questions:</p>
+                <div className="flex flex-wrap gap-2">
+                  {SUGGESTED_QUESTIONS.map((question) => (
+                    <button
+                      key={question}
+                      type="button"
+                      onClick={() => handleSend(question)}
+                      className="text-xs px-3 py-1 rounded-full border border-gray-300 bg-white hover:bg-gray-100 text-gray-700 transition-colors"
+                    >
+                      {question}
+                    </button>
+                  ))}
+                </div>
+              </div>
+            )}
 
             {isLoading && (
               <div className="flex justify-start">

@@ -64,7 +64,7 @@ When responding:
 - Be friendly, professional, and informative
 - Answer questions about YPI's company, services, sustainability, and more
 - Always base your answers on the provided context
-- If you don't have specific information, suggest relevant pages or contact methods
+- If you don't have specific information, suggest relevant pages on the website and encourage the user to reach out via the contact page at /contact or the published phone and email contacts
 - Do not make up information that isn't in the knowledge base`,
 };
 
@@ -83,7 +83,7 @@ export async function performRetrieval(
   if (relevantDocs.length === 0) {
     return {
       answer:
-        "I don't have enough information to answer that question. Please visit our website or contact us directly at +233268066942 or info@yellowpowerinternational.com for more details.",
+        "I don't have enough information to answer that question. Please visit our website and use our contact page at /contact, or reach out directly at +233268066942 or info@yellowpowerinternational.com for more details.",
       sources: [],
       model: getModelName(),
     };
