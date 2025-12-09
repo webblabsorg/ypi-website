@@ -217,12 +217,12 @@ export const MEDIA_VIDEOS: MediaVideo[] = [
   {
     id: 'vid-001',
     title: 'Wassa Akyempim Golden Star Site Visit - Tape 4',
-    thumbnail: 'https://img.youtube.com/vi/S6jOoxGpYPQ/hqdefault.jpg',
-    videoUrl: 'https://www.youtube.com/embed/S6jOoxGpYPQ',
+    thumbnail: 'https://img.youtube.com/vi/GNqQ2P3ith8/hqdefault.jpg',
+    videoUrl: 'https://www.youtube.com/embed/GNqQ2P3ith8',
     description: 'Comprehensive overview of YPI\'s services, capabilities, and commitment to excellence in mining support services across West Africa.',
     category: 'Project Showcase',
     duration: '5:30',
-    publishedAt: '2025-12-01',
+    publishedAt: '2025-12-09',
   },
   {
     id: 'vid-002',
