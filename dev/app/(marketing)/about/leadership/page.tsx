@@ -26,26 +26,6 @@ const leaders = [
     photo: "/images/leadership/seth-a-hackman.jpg",
   },
   {
-    name: "Abena Osei",
-    role: "Chief Financial Officer",
-    bio: "Strategic financial leadership with expertise in scaling operations. Drives financial planning and sustainable growth initiatives.",
-  },
-  {
-    name: "Kofi Asante",
-    role: "VP of Safety & Compliance",
-    bio: "Industry-recognized safety expert. Maintains our zero-accident goal and ensures compliance with international safety standards.",
-  },
-  {
-    name: "Ama Boateng",
-    role: "VP of Human Resources",
-    bio: "Champions talent development and employee growth. Leads recruitment, training, and retention strategies for our 201-500 member team.",
-  },
-  {
-    name: "Yaw Addo",
-    role: "VP of Equipment & Technology",
-    bio: "Technology innovator bringing modern solutions to mining operations. Manages our fleet and implements cutting-edge drilling systems.",
-  },
-  {
     name: "Senyo Fleku",
     role: "Finance Manager",
     bio: "Senyo Fleku is a knowledgeable Finance Manager with over 10 years proven history of working in the banking sector and mining industry. Skilled in Negotiation, Business Planning, Financial Risk, and Risk Management.",
