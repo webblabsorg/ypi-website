@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
-import { CLIENTS, TESTIMONIALS } from "@/lib/constants/projects";
-import { ClientLogo } from "@/components/ui/ClientLogo";
+import { TESTIMONIALS } from "@/lib/constants/projects";
 import { TestimonialSlider } from "@/components/ui/TestimonialSlider";
 
 export const metadata: Metadata = {
@@ -11,10 +11,39 @@ export const metadata: Metadata = {
   description: "Trusted by leading mining companies across West Africa. See what our clients say about our services.",
 };
 
+const CLIENT_LOGOS: string[] = [
+  "/images/clients/Blue_AMC_Logo.jpg",
+  "/images/clients/Color-logo-with-background-1024x368.jpg",
+  "/images/clients/FB_IMG_1608796302465.jpg",
+  "/images/clients/Oando-Plc-1024x405.jpg",
+  "/images/clients/WAMPEX-New-Logo-No-byline-1-scaled.jpg",
+  "/images/clients/african_mining_services_ams_logo.jpeg",
+  "/images/clients/african_underground_mining_services_logo.jpeg",
+  "/images/clients/ams.jpg",
+  "/images/clients/ang.jpg",
+  "/images/clients/correct.jpg",
+  "/images/clients/df.jpg",
+  "/images/clients/fds.jpg",
+  "/images/clients/go.jpeg",
+  "/images/clients/images.jpeg",
+  "/images/clients/kumba-iron-ore-anglo-american-thabazimbi-mine_33698.jpg",
+  "/images/clients/pres.jpg",
+  "/images/clients/rabotec_ghana_limited_logo.jpeg",
+  "/images/clients/sg.jpg",
+  "/images/clients/srg.jpg",
+  "/images/clients/st.jpg",
+  "/images/clients/van.jpeg",
+  "/images/clients/wa.jpg",
+  "/images/clients/wasia.jpg",
+  "/images/clients/wes.jpeg",
+  "/images/clients/west_end_mining_company_limited_logo.jpeg",
+  "/images/clients/xsfg.jpg",
+];
+
 export default function ClientsPage() {
   return (
     <main>
-      <section className="bg-gradient-to-br from-navy via-navy-600 to-navy-700 text-white py-20">
+      <section className="text-white py-20" style={{ backgroundColor: '#003087' }}>
         <div className="container">
           <div className="max-w-4xl mx-auto text-center">
             <h1 className="text-4xl md:text-5xl font-bold mb-6">Our Clients</h1>
@@ -32,8 +61,19 @@ export default function ClientsPage() {
             <p className="text-gray-600">Working with the best in the mining industry</p>
           </div>
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
-            {CLIENTS.map((client) => (
-              <ClientLogo key={client.id} client={client} size="medium" showName />
+            {CLIENT_LOGOS.map((src) => (
+              <div
+                key={src}
+                className="relative w-full h-16 md:h-20 flex items-center justify-center bg-white rounded-lg shadow-sm"
+              >
+                <Image
+                  src={src}
+                  alt="Client logo"
+                  fill
+                  className="object-contain"
+                  sizes="(max-width: 768px) 50vw, 25vw"
+                />
+              </div>
             ))}
           </div>
         </div>
@@ -49,7 +89,7 @@ export default function ClientsPage() {
         </div>
       </section>
 
-      <section className="py-16 bg-navy text-white">
+      <section className="py-16 text-white" style={{ backgroundColor: '#003087' }}>
         <div className="container max-w-3xl text-center">
           <h2 className="text-3xl font-bold mb-4">Become a Client</h2>
           <p className="text-xl text-gray-300 mb-8">
@@ -62,7 +102,12 @@ export default function ClientsPage() {
                 <ArrowRight className="ml-2 h-5 w-5" />
               </Link>
             </Button>
-            <Button size="lg" variant="outline" className="border-white text-white hover:bg-white/10" asChild>
+            <Button
+              size="lg"
+              variant="outline"
+              className="bg-white text-navy border-white hover:bg-white hover:text-navy"
+              asChild
+            >
               <Link href="/partnerships">Explore Partnerships</Link>
             </Button>
           </div>

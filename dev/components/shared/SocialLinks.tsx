@@ -26,13 +26,13 @@ export function SocialLinks({
   const socialLinks: SocialLink[] = [
     {
       name: 'LinkedIn',
-      url: process.env.NEXT_PUBLIC_LINKEDIN_URL || '',
+      url: process.env.NEXT_PUBLIC_LINKEDIN_URL || 'https://gh.linkedin.com/company/yellowpowerinternational',
       icon: Linkedin,
       color: 'hover:text-[#0077B5]',
     },
     {
       name: 'Facebook',
-      url: process.env.NEXT_PUBLIC_FACEBOOK_URL || '',
+      url: process.env.NEXT_PUBLIC_FACEBOOK_URL || 'https://web.facebook.com/yellowpowerintl/',
       icon: Facebook,
       color: 'hover:text-[#1877F2]',
     },

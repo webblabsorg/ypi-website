@@ -188,7 +188,7 @@ export default function ContactPage() {
           </h3>
           <div className="mt-4 flex flex-wrap items-center justify-center gap-4">
             <a
-              href="https://facebook.com/yellowpowerinternational"
+              href="https://web.facebook.com/yellowpowerintl/"
               target="_blank"
               rel="noopener noreferrer"
               className="text-gray-500 hover:text-gold-600 transition-colors"
@@ -206,7 +206,7 @@ export default function ContactPage() {
               <Instagram className="h-5 w-5" />
             </a>
             <a
-              href="https://linkedin.com/company/yellow-power-international"
+              href="https://gh.linkedin.com/company/yellowpowerinternational"
               target="_blank"
               rel="noopener noreferrer"
               className="text-gray-500 hover:text-gold-600 transition-colors"

@@ -41,13 +41,13 @@ export function Footer() {
             
             {/* Social Media Icons */}
             <div className="flex gap-3 mt-6">
-              <a href="https://facebook.com/yellowpowerinternational" target="_blank" rel="noopener noreferrer" className="text-gray-300 hover:text-gold transition-colors" aria-label="Facebook">
+              <a href="https://web.facebook.com/yellowpowerintl/" target="_blank" rel="noopener noreferrer" className="text-gray-300 hover:text-gold transition-colors" aria-label="Facebook">
                 <Facebook className="h-5 w-5" />
               </a>
               <a href="https://instagram.com/yellowpowerinternational" target="_blank" rel="noopener noreferrer" className="text-gray-300 hover:text-gold transition-colors" aria-label="Instagram">
                 <Instagram className="h-5 w-5" />
               </a>
-              <a href="https://linkedin.com/company/yellow-power-international" target="_blank" rel="noopener noreferrer" className="text-gray-300 hover:text-gold transition-colors" aria-label="LinkedIn">
+              <a href="https://gh.linkedin.com/company/yellowpowerinternational" target="_blank" rel="noopener noreferrer" className="text-gray-300 hover:text-gold transition-colors" aria-label="LinkedIn">
                 <Linkedin className="h-5 w-5" />
               </a>
               <a href="https://youtube.com/@yellowpowerinternational" target="_blank" rel="noopener noreferrer" className="text-gray-300 hover:text-gold transition-colors" aria-label="YouTube">
