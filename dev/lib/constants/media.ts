@@ -216,7 +216,7 @@ export const MEDIA_IMAGES: MediaImage[] = [
 export const MEDIA_VIDEOS: MediaVideo[] = [
   {
     id: 'vid-001',
-    title: 'Wassa Akyempim Golden Star Site Visit - Tape 4',
+    title: 'Ten 100 toner Komatsu dump trucks to Bibiani Site',
     thumbnail: 'https://img.youtube.com/vi/GNqQ2P3ith8/hqdefault.jpg',
     videoUrl: 'https://www.youtube.com/embed/GNqQ2P3ith8',
     description: 'Comprehensive overview of YPI\'s services, capabilities, and commitment to excellence in mining support services across West Africa.',
