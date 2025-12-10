@@ -14,6 +14,12 @@ const leaders = [
     photo: "/images/leadership/emmanuel-kweku-ganu.jpg",
   },
   {
+    name: "Yussif Osuman",
+    role: "Chief Operating Officer (COO)",
+    bio: "Experienced operations executive responsible for overseeing the day-to-day operations and strategic implementation across Yellow Power International's mining projects.",
+    photo: "/images/leadership/yussif-osuman.jpg",
+  },
+  {
     name: "Elvis Agobo",
     role: "Operations Manager",
     bio: "Elvis Agobo has accrued credible local and expatriate experience around Mining and related operations in West Africa and Africa at large.",
