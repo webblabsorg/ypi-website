@@ -20,7 +20,7 @@ const SLIDES: Slide[] = [
   {
     id: 1,
     image: "/images/hero/powering-africas-mining-future.jpg",
-    headline: "Powering Africa's Mining Future",
+    headline: "Precision without compromise",
     subHeadline: "Comprehensive drilling and mining support services across West Africa since 2017",
     ctaText: "Explore Our Services",
     ctaLink: "/services",
