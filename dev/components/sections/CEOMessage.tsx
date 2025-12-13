@@ -53,9 +53,10 @@ export function CEOMessage() {
             <div className="flex items-center gap-4 pt-6 border-t border-gray-200">
               <div className="relative h-16 w-16 rounded-full overflow-hidden flex-shrink-0">
                 <Image
-                  src="/images/ceo-emmanuel-ganu.jpg"
+                  src="/images/avatar.svg"
                   alt="Emmanuel Kweku Ganu - CEO & Founder"
                   fill
+                  unoptimized
                   className="object-cover"
                   sizes="64px"
                 />

@@ -19,6 +19,8 @@ export function LeadershipCard({
   email,
   linkedin,
 }: LeadershipCardProps) {
+  const isSvgPhoto = !!photo && photo.toLowerCase().endsWith(".svg");
+
   return (
     <Card className="group hover:shadow-lg transition-all duration-300">
       <CardHeader className="space-y-4">
@@ -28,6 +30,7 @@ export function LeadershipCard({
               src={photo}
               alt={name}
               fill
+              unoptimized={isSvgPhoto}
               className="object-cover group-hover:scale-105 transition-transform duration-300"
             />
           </div>

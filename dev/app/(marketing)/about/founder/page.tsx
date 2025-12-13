@@ -30,9 +30,10 @@ export default function FounderPage() {
             {/* Founder Image */}
             <div className="aspect-[3/4] rounded-2xl overflow-hidden relative">
               <Image 
-                src="/images/founder-ganu.jpg"
+                src="/images/avatar.svg"
                 alt="Mr. Emmanuel Kweku Ganu - Founder & CEO"
                 fill
+                unoptimized
                 className="object-cover"
                 quality={100}
                 priority

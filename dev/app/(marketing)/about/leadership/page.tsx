@@ -11,7 +11,7 @@ const leaders = [
     name: "Emmanuel Kweku Ganu",
     role: "Founder & Chief Executive Officer",
     bio: "Visionary leader with decades of mining industry experience. Founded YPI in 2017 with a mission to deliver world-class mining support services across Africa.",
-    photo: "/images/leadership/emmanuel-kweku-ganu.jpg",
+    photo: "/images/avatar.svg",
   },
   {
     name: "Yussif Osuman",
@@ -29,7 +29,7 @@ const leaders = [
     name: "Seth A Hackman",
     role: "Deputy Operations Manager",
     bio: "Supports operations leadership across all active sites, coordinating field teams and ensuring project delivery meets Yellow Power's safety and performance standards.",
-    photo: "/images/leadership/seth-a-hackman.jpg",
+    photo: "/images/avatar.svg",
   },
   {
     name: "Senyo Fleku",
